@@ -1,0 +1,4 @@
+Have set DNS server to 8.8.8.8 and 8.8.4.4 - google servers.
+Because of error of twitch chat loading and link operating. It seems that local DNS servers blocked twitch's functionality somehow.
+
+Found on reddit by "twitch chat does't work" in search. 

@@ -1,0 +1,37 @@
+//THIS IS TH COPY FROM GarfieldPP_readme.txt
+2) For ROOT the following packages required (beside preintalled) https://root.cern.ch/build-prerequisites (via apt-get install <name>):
+git
+dpkg-dev
+cmake
+binutils
+libx11-dev
+libxpm-dev
+libxft-dev
+libxext-dev
+libpng-dev
+libjpeg-dev
+gfortran (this one is necessary for garfield)
+Recommeded (? not sure, but python support will not harm):
+python-dev (python 2.7 is pre-unstalled, but not its libraries)
+
+Compilation procedure and parameters:
+
+$ cd to root's build folder
+	$ $CMAKE_HOME/cmake root_source_folder(with CMakeList.txt) -DCMAKE_INSTALL_PRFIX=<path to root isntallfolder. If by default (unix bin folder), then do not specify this parameter> -Dgnuinstall=ON (this one to use default options for Unix OS) -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 -DPYTHON_LIBRARY=/usr/lib/python2.7/config-x86_64-linux-gnu[or just config]/libpython2.7.so (these 2 are required as CMake may have some problem finding them. Beware, that in the message
+after this command, if libs are not found, CMake will report that environment variables PYTHON_LIBRARIES and
+PYTHON_INCLUDE_DIRS are not pointing to the proper files. This is too some error, use singilar names) -Dbuiltin_gls=ON
+(internet acess required as cmake will download GSL tar files and link them internally with ROOT, not sure whether this
+option is required) -Ddgml=ON (cmake+garfieldPP writes that it can not find dgml component of ROOT so this is an attempt
+to fix it. It is unclear though whether this does work, I believe that OpenGL is also requred. With make+garfield
+everything works fine).
+    So the command is (example):
+	$ cmake ../root-6.08.04 -Dgnuinstall=ON -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 -DPYTHON_LIBRARY=/usr/lib/python2.7/config-x86_64-linux-gnu/libpython2.7.so -Dbuiltin_gsl=ON -Dgdml=ON -DCMAKE_INSTALL_PREFIX=../../root-6.08.04
+
+make sure required componets (and python) are found
+
+	$ cmake --build .
+	$ cmake --build . --target install
+
+!!!run root-6.08.04/bin/thisroot.sh to configure env. var-s  - every time new terminal is opened
+	$ source bin/thisroot.sh
+see UbuntuAndGarfieldPP.txt readme

@@ -1,0 +1,112 @@
+27.07.2017 --------- ------------ ---------- ------------- ---------- --------- ---------- window width: --------------------|
+//Instruction are not in chronological order. Some modifications are made way before the year 2017.
+
+1) Proper unicode display: Chrome->Settings->Advanced->Web Content->Customize fonts->Encoding->set to Unicode-8 or Western
+(Windows 1252) - the latter was default for me.
+The latest uncode characters are still not rendered, extension required (https://superuser.com/questions/1094188/how-do-i-display-the-latest-unicode-characters-esp-emoji-in-windows-browsers) Emoji Keyboard (2016)
+
+2) chrome.dll patch to disable developer mode pop-up. See ../readme.txt
+(Current chrome version is 52.0.2743.116 m) (with this at least patch works)
+
+3) 27.07.2017 Chrome settings (not trivial ones):
+	on 	Enable guest browsing
+	off	Let anyone add a person to Chrome
+	Privacy-> on	Allow local data to be set
+                  off	Block third-party cookies data
+		  on	Allow all sites to run JavaScript
+		  on	Allow all sites to use key generation in forms
+		  on	Allow sites to ask to become default handlers for protocols
+		  on	Run all plugin content
+		  on	Do not allow any site to show pop-ups
+		  on	Do not allow any site to show notifications
+		  on	Allow identifiers for protected content
+		  on	Do not allow microphone
+		  on	Do not allow camera
+		  on 	Ask when a site wants to use a plugin to access your computer
+		  on	Ask me ... at MIDI devices
+		  on	Do not allow recently closed sites to finish sending and receiving data
+	off	Use a web service to help resolve navigation errors
+	on	Use a prediction service to help to complete searches and URLs typed in the address bar
+	grey	Use a prediction service to load pages more quickly
+	off	Automatically report details of possible security incidents to Google
+	on	Protect you and your device from dangerous sites
+	off	Use a web service to help resolve spelling errors
+	off	Automatically send usage statistics
+	on	Send a "Do Not Track"
+
+	on	Enable Autofill to fill out web forms in a single click
+	on	Offer to save your web passwords
+	
+	off	Continue running bkg apps
+	on	Use hardware acceleration
+
+4) At 27.07.2017 the list of extensions is following:
+    ****Speed dial 2 (v2.1.3) (copied version loaded locally, as far as I remember not modified)
+		translate.google.com	www.google.com/ncr [ncr means no country redirect]  www.twitch.tv www.reddit.com
+		www.thefreedictionary.com
+		Options->4 columns
+			spacing 24px
+			on	center rows vertically
+			on	remember active group
+			off	hihglight most visited pages
+			off	show + button
+			off	open links in new tab
+			Layout	Allo scrolling
+		Advanced
+			off	Show Options button
+			Manual bookmark order
+			Medium quality
+			Refresh thumbnail 10th visit
+			Fit custom logos (default)
+			Modify with 50% of screen width
+			on	show Speed Dial in context menu
+		Side bar->show applications
+
+    ****AdNauseam (v3.0.50) (disabled) - blocks ads and emulates clicks on them. Works fine but does not block some ads.
+    ****[MY] Google translate customizer. See corresp readme
+    ****[MY] Rplay - upon full loading of joyreactor blocks ads by hierarchy (they have randomized IDs and names)
+    ****Search image on JoyReactor with bayanometr (v0.0.2)
+    ****Adblock Plus (v1.13.3)	(disabled) - ceased to block indiscriminately, so I transited to uBlock
+    ****Emoji Keyboard (2016) by EmojiOne TM (v1.7.5) - allows to render and print new Unicode characters (including color
+emojies)
+    ****Google Docs (v0.9) - built in
+    ****Google Docs Offline (v1.4) (disabled) - built in
+    ****Google Slides (v0.9) - built in
+    ****Hotspot Shield VPN Proxy - Unblock Sites (v2.2.42) - faster to launch alternative to tor
+    ****HTTPS Everywhere (v2017.7.18) (disabled) caused some issues if I recall correctly
+    ****iCloud Button (v1.0) - build in, google promoted, not removable
+    ****Proxy SwitchyOmega (disabled) (v2.4.6) - allows usage of proxies and chained proxies. Disabled because of comflict
+with Hotspot Shield VPN Proxy. Used for tor and masking from a specific location (US) with public proxy servers.
+		Options->General
+			on	revert proxy changes done by other apps.
+			off	show count of failed web requests
+			Download Interval never
+		Options->Interface
+			on	Confirm in condition deletion
+			off	Refresh current tab on profile change
+			off	Allow inspecting proxy...
+			No keyboard shortcut
+			Sturtup profile  Direct
+			off	Show advanced condition types
+			off	Quick Switch
+		Options->Profiles:
+			"Chain" (e.g. for US proxy, originally for chaining proxies with tor)
+			HTTP	<server IP>	<port>
+			default scheme, no advanced options are used
+			"proxy" (for tor)
+			SOCKS4	localhost	9050
+			default scheme, no advanced options are used
+    ****uBlock Origin (v1.13.8) - new alternative to AdBlock
+
+5) For custom extension see github. At the moment (27.07.2017) the folder is C:\Program Files\Chrome Extensions\
+(Note that upon loading chrome copies the files to its own folder in Users\...\AppData with other extensions)
+
+6) Chrome updates are disabled (in order to avoid patching chrome.dll every time):
+	1) Renamed 'Update' folder to 'Update_'
+	2) changed register keys containing update programs HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Google\Update\...
+(if recall correctly)
+	3) Disable google update service (in control panel->andiminstration)
+
+7) Backspace functionality was depricated in 51.0.2704.84 to 52.0.2743.116. I used to stay at 51 version, but after some time
+youtube stopped working as well as other sites/elements. So updates are have to be done form time to time. And no more
+backspace alas.

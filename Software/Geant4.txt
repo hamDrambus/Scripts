@@ -1,0 +1,30 @@
+geant4 v10.00.p04
+
+create build folder (e.g. .../labware/geant4_10.00.p04/build)
+//the main geant folder is .../labware/geant4_10.00.p04
+
+Qt must be installed
+Mind that env vars of Qt must be set in installed locations, not in the source code!
+In my case F:\Qt_5.7.0\src-5.7.0 is source folder and F:\Qt-5.7.0\ is an install folder
+	Env_vars (not created by me, but I deleted "\src-5.7.0" in them so they point to the install locations):
+	QT_QPA_PLATFORM_PLUGIN_PATH=F:\QT_5.7.0\plugins\platforms
+	Qt5Core_DIR=F:\Qt_5.7.0lib\cmake\Qt5Core
+	QTDIR=F:\Qt_5.7.0
+Also Path =
+...;F:\Qt_5.7.0\src-5.7.0\gnuwin32\bin;F:\Qt_5.7.0\src-5.7.0\qtbase\bin;...;F:\Qt_5.7.0\lib;F:\Qt_5.7.0\qtbase\include;F:\Qt_5.7.0\bin;F:\Qt_5.7.0\qtbase\bin
+
+1) cmd to build folder (or better use git bash)
+
+2) "F:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\vsvars32.bat"
+
+3) See official installation guide and cmake parameters
+
+4) cmake -G "Visual Studio 12 2013 Win64" -DCMAKE_INSTALL_PREFIX="F:\Bitch\Desktop\Top\5th year\labware\geant4_10.00.p04\install" -DGEANT4_INSTALL_DATADIR="F:\Bitch\Desktop\Top\5th year\labware\geant4_10.02.p02\install\share\Geant4-10.2.2\data" -DGEANT4_USE_QT=ON -DCMAKE_PREFIX_PATH="F:\Qt_5.7.0\qtbase\lib\cmake\Qt5" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DGEANT4_INSTALL_DATA=ON ../
+
+5) cmake --build . --config RelWithDebInfo
+
+6) cmake --build . --config RelWithDebInfo --target install
+//^ has no effect?
+
+7) build/Geant4.sln - visual studio project, build it in order to finish installation
+

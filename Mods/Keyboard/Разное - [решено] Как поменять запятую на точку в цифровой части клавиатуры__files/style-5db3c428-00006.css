@@ -1,0 +1,370 @@
+/* vBulletin 3 CSS For Style 'OSzone' (styleid: 6) */
+body
+{
+	background: #ffffff;
+	color: #000000;
+	font: 12px Verdana, Arial, Helvetica, sans-serif;
+	margin: 0px;
+	padding: 0px;
+}
+.page
+{
+	background: #FFFFFF;
+	color: #000000;
+}
+td, th, p, li
+{
+	font: 12px Verdana, Arial, Helvetica, sans-serif;
+}
+.tborder
+{
+	background: #5585CD;
+	color: #000000;
+}
+.tcat
+{
+	background: #5585CD url(../../images/gradients/bg-frm.gif) repeat-x top left;
+	color: #FFFFFF;
+	font: bold 12px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.tcat a:link, .tcat_alink
+{
+	color: #ffffff;
+	text-decoration: none;
+}
+.tcat a:visited, .tcat_avisited
+{
+	color: #ffffff;
+	text-decoration: none;
+}
+.tcat a:hover, .tcat a:active, .tcat_ahover
+{
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+.thead
+{
+	background: #DFECFF;
+	color: #393939;
+	font: bold 11px Tahoma, verdana;
+}
+.thead a:link, .thead_alink
+{
+	color: #393939;
+	text-decoration: none;
+}
+.thead a:visited, .thead_avisited
+{
+	color: #393939;
+	text-decoration: none;
+}
+.thead a:hover, .thead a:active, .thead_ahover
+{
+	color: #393939;
+	text-decoration: underline;
+}
+.tfoot
+{
+	background: #6F99D9;
+	color: #DFECFF;
+}
+.tfoot a:link, .tfoot_alink
+{
+	color: #FFFFFF;
+}
+.tfoot a:visited, .tfoot_avisited
+{
+	color: #DFECFF;
+}
+.tfoot a:hover, .tfoot a:active, .tfoot_ahover
+{
+	color: #FFFFFF;
+}
+.alt1, .alt1Active
+{
+	background: #F5F9FE;
+	color: #000000;
+}
+.alt2, .alt2Active
+{
+	background: #DFECFF;
+	color: #000000;
+}
+td.inlinemod
+{
+	background: #FFFFCC;
+	color: #000000;
+}
+.wysiwyg
+{
+	background: #F5F9FE;
+	color: #000000;
+	font: 12px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+textarea, .bginput
+{
+	background: #F5F9FE;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.button
+{
+	background: #6391D5;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	border: 1px solid #93B5E9;
+	color: #ffffff;
+	padding: 2px;
+}
+select
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+option, optgroup
+{
+	font-size: 11px;
+	font-family: verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.smallfont
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.time
+{
+	color: #666666;
+}
+.navbar
+{
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.highlight
+{
+	color: #990000;
+	font-weight: bold;
+}
+.fjsel
+{
+	background: #5585CD;
+	color: #F5F9FE;
+}
+.fjdpth0
+{
+	background: #F7F7F7;
+	color: #000000;
+}
+.panel
+{
+	background: #DFECFF;
+	color: #000000;
+	padding: 10px;
+	border: 2px outset;
+}
+.panelsurround
+{
+	background: #DFECFF;
+	color: #000000;
+}
+legend
+{
+	color: #5585CD;
+	font: 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.vbmenu_control
+{
+	background: #5585CD url(../../images/gradients/bg-frm.gif) repeat-x top left;
+	color: #FFFFFF;
+	font: bold 11px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	FILTER: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#5585CD', endColorStr='#93B5E9', gradientType='0');
+	padding: 3px 6px 3px 6px;
+	white-space: nowrap;
+}
+.vbmenu_control a:link, .vbmenu_control_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_control a:visited, .vbmenu_control_avisited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_control a:hover, .vbmenu_control a:active, .vbmenu_control_ahover
+{
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+.vbmenu_popup
+{
+	background: #FFFFFF;
+	color: #000000;
+	border: 1px solid #5585CD;
+}
+.vbmenu_option
+{
+	background: #F5F9FE;
+	color: #000000;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.vbmenu_option a:link, .vbmenu_option_alink
+{
+	color: #333333;
+	text-decoration: none;
+}
+.vbmenu_option a:visited, .vbmenu_option_avisited
+{
+	color: #333333;
+	text-decoration: none;
+}
+.vbmenu_option a:hover, .vbmenu_option a:active, .vbmenu_option_ahover
+{
+	color: #333333;
+	text-decoration: none;
+}
+.vbmenu_hilite
+{
+	background: #5585CD;
+	color: #FFFFFF;
+	font: 11px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.vbmenu_hilite a:link, .vbmenu_hilite_alink
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_hilite a:visited, .vbmenu_hilite_avisited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.vbmenu_hilite a:hover, .vbmenu_hilite a:active, .vbmenu_hilite_ahover
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+/* ***** styling for 'big' usernames on postbit etc. ***** */
+.bigusername { font-size: 13px;font-weight: bold;}
+
+/* ***** small padding on 'thead' elements ***** */
+td.thead, div.thead { padding: 4px; }
+
+/* ***** basic styles for multi-page nav elements */
+.pagenav a { text-decoration: none; }
+.pagenav td { padding: 2px 4px 2px 4px; }
+
+/* ***** define margin and font-size for elements inside panels ***** */
+.fieldset { margin-bottom: 6px; }
+.fieldset, .fieldset td, .fieldset p, .fieldset li { font-size: 11px; }
+
+/* ***** don't change the following ***** */
+form { display: inline; }
+label { cursor: default; }
+.normal { font-weight: normal; }
+.inlineimg { vertical-align: middle; }
+.table4 { border: 1px dashed Black
+}
+.nav_block_a {background:url(http://soft.oszone.net/img/2/bg-nav-block.gif) repeat-y left;}
+.nav_block_b {background:url(http://soft.oszone.net/img/2/bg-nav-block-bor.gif) no-repeat top; padding:10px; padding-top:0;}
+.nav_razdel {font-size:12px; color:#ee4d27; font-weight:bold;background:url(http://soft.oszone.net/img/2/razdelitel.gif) repeat-x bottom; padding-bottom:4px; margin-bottom:2px; padding-top:10px;}
+.nav_razdel a{color:#ee4d27; text-decoration:none;}
+.nav {background:url(http://soft.oszone.net/img/2/arrow.gif) no-repeat 1px 5px; padding-left:9px; margin-top:3px;}
+.nav-more {background:url(http://soft.oszone.net/img/2/arrow-down.gif) no-repeat 0 7px; padding-left:9px; margin-top:3px; color:#ee4d27;}
+.nav-more a {color:#ee4d27;}
+.block-content {padding:0 2px; padding-bottom:10px;}
+.sm_list {background:url(http://soft.oszone.net/img/2/sm-arrow.gif) no-repeat 0 5px; padding-left:7px; margin-top:3px; margin-bottom:1px;}
+
+#rightcol-c{width:200px; padding-left:13px;/*1*/ vertical-align:top;}
+#footer_a {background:url(http://www.oszone.net/figs/bg-footer.gif) repeat-x top; margin-top:23px;}
+#footer_b {background:url(http://www.oszone.net/figs/bg-footer-right-f.gif) no-repeat right top;}
+#footer_c {background:url(http://www.oszone.net/figs/bg-footer-left.gif) no-repeat left top; height:61px; padding-top:16px; padding-left:11px;}
+
+#banners {text-align:center;}
+#foot_links {padding-bottom:1px;}
+
+.t_main_menu_c a {text-decoration:none; color:#0468d5; font-weight:bold; } 
+.t_menu_c a {text-decoration:none; color:#5a5a5a;}
+.t_main_menu_c a:hover {color:#ef5835;}
+.t_menu_c a:hover {color:#0468d5;}
+#top {padding:12px 0;}
+.t_main_menu_a {background:url(http://soft.oszone.net/img/2/bg-topmenu-main-center.gif) repeat top; float:left; margin-right:4px; font-family:Tahoma; font-size:11px; color:#5a5a5a;}
+.t_main_menu_b {background:url(http://soft.oszone.net/img/2/bg-topmenu-main-left.gif) no-repeat left top;}
+.t_main_menu_c {background:url(http://soft.oszone.net/img/2/bg-topmenu-main-right.gif) no-repeat right top; padding:7px; padding-top:5px; padding-bottom:6px; font-size:12px;}
+.t_menu_a {background:url(http://soft.oszone.net/img/2/bg-topmenu-oth-center.gif) repeat top; float:left; margin-right:4px; font-family:Tahoma; font-size:11px; color:#5a5a5a;}
+.t_menu_b {background:url(http://soft.oszone.net/img/2/bg-topmenu-oth-left.gif) no-repeat left top;}
+.t_menu_c {background:url(http://soft.oszone.net/img/2/bg-topmenu-oth-right.gif) no-repeat right top; padding:7px; padding-top:5px; padding-bottom:6px; font-size:12px;}
+
+.t_srch_a {background:url(http://soft.oszone.net/img/2/bg-topmenu-src-center.gif) repeat top; float:right; margin-right:4px;}
+.t_srch_b {background:url(http://soft.oszone.net/img/2/bg-topmenu-src-left.gif) no-repeat left top;}
+.t_srch_c {background:url(http://soft.oszone.net/img/2/bg-topmenu-src-right.gif) no-repeat right top; height:24px; width:390px; padding-left:7px; padding-right:7px; font-size:12px;}
+.t_srch {height:19px; padding-top:5px; color:#8b8c90; padding-left:21px; vertical-align:top;}
+#search_but {text-align:right; vertical-align:top;padding-top:4px;}
+
+td.grad {background-image: url('../../images/grad_menu.gif');background-repeat: repeat-y;background-position: right top;}
+table.gr {background-image: url('../../images/grad_menu.gif');background-repeat: repeat-y; background-position: right top;
+          FILTER: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#5585CD', endColorStr='#ACCAF8', gradientType='1');
+          border-top: 1px solid #A2C5FA;}
+textarea {font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 12px;}
+
+a {color: #0066CC; /*text-decoration:underline;*/}
+a:hover {color: #0066CC; text-decoration:none;}
+
+.title {margin: 0; font-family: Tahoma, Arial;font-size: 13pt;color: #FFFFFF; font-weight: normal;}
+h1 {margin: 0 0 0 8px; font-family: Tahoma, Arial;font-size: 17px;color: #FFFFFF;}
+h1.dark {margin: 0 0 0 8px; font-family: Tahoma, Arial;font-size: 17px;color: #2F5FBE;}
+h1 a {color: #FFFFFF;}
+h1 a:hover {color: #FFFFFF;}
+
+p {margin: 3px 3px 3px 0px; font-family: Verdana, Arial, Helvetica, sans-serif;font-size: 12px;color: #333333;}
+p.copy {font-size: 11px; color: #FFFFFF}
+p.copyd {font-size: 11px; color: #666666;}
+p.copy a {color: #FFFFFF; text-decoration: underline;}
+p.copy a:hover {color: #FFFFFF; text-decoration: none;}
+
+p.head {margin: 6px 1px 3px 3px;font-family:  Verdana, Arial, Helvetica, sans-serif;font-size: 12px;color: #FFFFFF;}
+p.head a {font-weight: bold;color: #FFFFFF;margin: 0px;padding:0px;}
+p.head a:hover {font-weight: bold;color: #FFFFFF;}
+
+.tc {font-weight: bold;font-family:  Verdana, Arial, Helvetica, sans-serif;font-size: 11px;color: #FFFFFF;padding-left: 4px;padding-right: 4px;}
+.tc a {color: #FFFFFF;text-decoration:none;}
+.tc a:hover {color: #FFFFFF;text-decoration:underline;}
+.smltxt {font-family:  Verdana, Arial, Helvetica, sans-serif;font-size: 10px;color:#606060;}
+
+form {margin: 0; padding: 0;}
+.s {border: 1px solid #5F80C5;font-family: Verdana, Arial, Helvetica, sans-serif;}
+
+td.kb{ border : 1px solid #5585CD; }
+
+/* global menu */
+a.glob {font-family: Verdana; font-size: 14px; color: #ABCBF9;text-decoration: none;}
+a.glob:hover {color: #FFFFFF;}
+
+.advfont {
+	FONT: 9px verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+}
+.bbccode, .bbchtml, .bbcphp {
+ background: #DFECFF;
+ border: 1px solid #93B5E9;
+ border-top: 4px solid #6391D5;
+ color: #000000;
+ font-size: 12px;
+ margin: 20px;
+ margin-top: 10px;
+ margin-bottom: 10px;
+ width: 650px;
+}
+.bbccodetitle, .bbchtmltitle, .bbcphptitle {
+ font-weight: bold;
+ font-size: 10px;
+ border: 0px;
+ border-bottom: 1px dashed #93B5E9;
+ color: #0949BE;
+ margin-bottom: 5px;
+ width: 100%;
+}
+.codepre, .htmlpre, .phppre {
+ width:640px;
+ margin:0px;
+ padding:5px;
+ overflow:auto;
+}

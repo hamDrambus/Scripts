@@ -1,0 +1,11 @@
+As of May 2015 Chrome beta/dev/canary on Windows (see lines 75-78) always display this warning.
+
+I've just patched chrome.dll (dev channel, 32-bit) using hiew32 demo version: run it, switch to hex view (Enter key), search for ExtensionDeveloperModeWarning (F7) then press F6 to find the referring code, go to nearby INC EAX line, which is followed by RETN, press F3 to edit, type 90 instead of 40, which will be rendered as NOP (no-op), save (F9).
+Simplified method found by @Gsx, which also works for 64-bit Chrome dev:
+run hiew32 demo (in admin mode) and open Chrome.dll
+switch to hex view (Enter key)
+search for ExtensionDeveloperModeWarning (F7)
+press F3 to edit and replace the first letter "E" with any other character
+save (F9).
+patch.BAT script
+Of course this will last only until the next update so whoever needs it frequently might write an auto-patcher or a launcher that patches the dll in memory.

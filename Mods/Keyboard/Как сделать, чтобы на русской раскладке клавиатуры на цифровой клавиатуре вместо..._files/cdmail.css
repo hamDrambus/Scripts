@@ -1,0 +1,790 @@
+/* The main file for monitors */
+/**********************************************/
+@media screen {
+
+body {
+width: 90%;
+max-width: 1340px;
+margin: 0px auto;         
+color:#000000;
+padding: 2px;
+background: #535353 url('/pic/fon.gif'); 
+background-color: #535353; 
+}
+
+.sub_body {
+background: #FFFFFF; 
+background-color: #FFFFFF; 
+}
+
+.block_up {
+  background: #5083D6;
+  height: 50px; 
+  font-weight: bold;
+  -moz-border-radius-topleft: 0.8em;
+  -moz-border-radius-topright: 0.8em;
+  -webkit-border-top-left-radius: 0.8em;
+  -webkit-border-top-right-radius: 0.8em;
+  -khtml-border-top-left-radius: 0.8em;
+  -khtml-border-top-right-radius: 0.8em;
+  border-top-left-radius: 0.8em;
+  border-top-right-radius: 0.8em;
+  padding: 0.8em;
+  margin-top: 0.8em;
+  }
+  
+.block_bot {
+  height: 50px;
+  background: #1C1C1C;
+  font-family: Arial, Helvetica, sans-serif; 
+  font-size: 75%; 
+  color: #A6A6A6;
+  -moz-border-radius-bottomleft: 0.8em;
+  -moz-border-radius-bottomright: 0.8em;
+  -webkit-border-bottom-left-radius: 0.8em;
+  -webkit-border-bottom-right-radius: 0.8em;
+  -khtml-border-bottom-left-radius: 0.8em;
+  -khtml-border-bottom-right-radius: 0.8em;
+  border-bottom-left-radius: 0.8em;
+  border-bottom-right-radius: 0.8em;
+  padding: 0.8em;
+  margin-bottom: 0.8em;
+  } 
+
+.scrollup{
+width:40px;
+height:40px;
+opacity:0.3;
+position:fixed;
+bottom:50px;
+right:100px;
+display:none;
+text-indent:-9999px;
+background: url('top.png') no-repeat;
+}
+
+.faq_arhive {   
+    font-family: Arial, Helvetica, sans-serif; 
+	font-size: 95%; 
+	color: #000000;
+	background-color: #F2F2F2;
+	width: 80%;
+	border: 1px solid #000000;
+    padding: 5px; 
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+}
+
+.ya_table {   
+    font-family: Arial, Helvetica, sans-serif; 
+	font-size: 95%; 
+	color: #000000;
+	background-color: #F2F2F2;
+	width: 80%;
+	border: 1px solid #000000;
+    padding: 5px; 
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+}
+
+.software_table {   
+    border: 1px solid #329900;
+    padding: 5px; 
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+}
+
+.informer_design {
+background-color: #F5F5F5; 
+} 
+
+.table_program_page {
+border-top: 1px solid #C0C0C0; /* Разделительная линия */ 
+border-bottom: 1px solid #C0C0C0; /* Разделительная линия */ 
+max-width: 500px;
+width: 100%;
+} 
+
+table.table_program_page tr td {
+padding: 4px; /* Отступ между строками */
+} 
+
+.tr2_table_program_page {
+background-color: #F5F5F5; 
+} 
+
+.bot  {color: #DCDCDC; padding: 2px;}
+a:link.bot {text-decoration: underline; color: #A6A6A6}
+a:visited.bot {text-decoration: underline; color: #A6A6A6}
+a:hover.bot {color: #F5F5F5; text-decoration: underline; BACKGROUND: #ADC2EB}
+
+.small_screen {width: 105px} 
+.download_image {width: 40px}
+.only_mobile {display: none;}
+.form_faq {width: 90%;} 
+.form_soft {width: 90%;}
+
+a:link {text-decoration: none; color: #0033cc}
+a:visited {text-decoration: none; color: #0033cc}
+a:hover {text-decoration: underline; color: #000080}
+a:link.softmenu {text-decoration: underline; color: #000000}
+a:visited.softmenu {text-decoration: underline; color: #000000}
+a:hover.softmenu {text-decoration: underline; color: #808080}
+a:link.softmenu_bold {text-decoration: underline; color: #000000; font-weight: bold;}
+a:visited.softmenu_bold {text-decoration: underline; color: #000000; font-weight: bold;}
+a:hover.softmenu_bold {text-decoration: underline; color: #808080; font-weight: bold;}
+a:link.up {text-decoration: underline; color: #FFFFFF}
+a:visited.up {text-decoration: underline; color: #FFFFFF}
+a:hover.up {color: #FFFFFF; text-decoration: underline; BACKGROUND: #ADC2EB}
+
+a:link.raiting_java {text-decoration: none; color: #FFFFFF}
+a:visited.raiting_java {text-decoration: none; color: #FFFFFF}
+a:hover.raiting_java {color: #FFFFFF; text-decoration: underline;}
+ 
+.table_program {border: 1px solid #C0C0C0; width: 550px; align: center}
+
+.up  {font-family: Arial, Helvetica, sans-serif; font-size: 100%; color: #FFFFFF; padding: 2px;}
+.upup  {font-family: Arial, Helvetica, sans-serif; font-size: 100%; color: #FFFF99}
+.text {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #000000}
+.rekl {font-family: Arial, Helvetica, sans-serif; font-size: 80%; color: #333333} 
+.blue {color: #336699}
+.comment {border-bottom: 1px dashed #C0C0C0; padding-bottom: 5px;}
+
+.nav_up  {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #FFFFFF; BACKGROUND: #93AFE6} 
+.category  {color:  #FFFFFF;  background-color: #7D838C;}
+.new {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #ffffff; background-color: #FF9933}
+.soft_bold2  {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #666666; font-weight: bold;} 
+.soft {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #000000} 
+.soft_gray {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #808080}
+.soft_vote  {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #000000}
+.soft_small  {font-family: Arial, Helvetica, sans-serif; font-size: 80%; color: #808080}
+.soft_small1 {font-family: Arial, Helvetica, sans-serif; font-size: 80%; color: #000000}
+.soft_category {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #000000} 
+.soft_screen {font-family: Arial, Helvetica, sans-serif; font-size: 75%; color: #000000}
+.soft_italic {font-size: 95%; color: #000000; font-style: italic;}
+.soft_bold  {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #000000; font-weight: bold;} 
+.soft_bold_white  {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #ffffff; font-weight: bold;}
+.soft_bold_light  {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #333333; font-weight: 200;}
+.soft_question {font-family: Arial, Helvetica, sans-serif; font-size: 105%; color: #ffffff; background-color: #0066ff;}
+.soft_number {font-family: Arial, Helvetica, sans-serif; font-size: 140%; font-weight: bold; color: #ffffff; background-color: #7789BC;}
+.soft_head2 {font-family: Arial, Helvetica, sans-serif; font-weight: bold;} 
+.soft_download {font-family: Arial, Helvetica, sans-serif; font-size: 130%; color: #000000; font-weight: bold;} 
+.soft_comment {font-family: Arial, Helvetica, sans-serif; font-size: 90%; color: #000000} 
+.question {font-family: Arial, Helvetica, sans-serif; FONT-WEIGHT: bold; font-size: 110%; color: #000000} 
+.soft_add_error {font-family: Arial, Helvetica, sans-serif; font-size: 120%; color: #ff0000; font-weight: bold;}
+.soft_add_success {font-family: Arial, Helvetica, sans-serif; font-size: 120%; color: #008000; font-weight: bold;}
+.soft_link_bold {font-family: Arial, Helvetica, sans-serif; font-size: 95%; font-weight: bold;}
+.rb {font-family: Arial, Helvetica, sans-serif; font-size: 75%; color: #000000} 
+.soft_big {font-family: Arial, Helvetica, sans-serif; FONT-WEIGHT: bold; font-size: 110%; color: #000000;} 
+.soft_bigger {font-family: Arial, Helvetica, sans-serif; font-size: 110%; color: #000000;}
+.soft_navig {font-family: Arial, Helvetica, sans-serif; font-size: 110%; color: #000000;} 
+.raiting {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #000000;}
+.raiting_java {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #FFFFFF; FONT-WEIGHT: bold;}
+.faq_question {font-family: Arial, Helvetica, sans-serif; font-size: 85%; font-weight: bold; color: #ffffff; background-color: #6C93DB;}
+
+h1 {font-family: Arial, Helvetica, sans-serif; FONT-WEIGHT: bold; font-size: 120%; color: #000000}
+h2 {font-family: Arial, Helvetica, sans-serif; FONT-WEIGHT: bold; font-size: 115%; color: #000000}
+h3 {font-family: Arial, Helvetica, sans-serif; FONT-WEIGHT: bold; font-size: 110%; color: #000000}
+h4 {font-family: Arial, Helvetica, sans-serif; FONT-WEIGHT: bold; font-size: 105%; color: #000000}
+
+.bread_crumb {font-family: Arial, Helvetica, sans-serif; font-size: 75%; color: #000000}
+.bread_crumb_bottom {padding: 5px}
+
+.bot_line {
+    border-bottom: 1px dashed #C0C0C0; /* Разделительная линия */
+   }
+
+.short_comments
+{
+  background-color: #ECEEFD;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 110%;
+  color: #000000;
+  padding: 10px;
+}
+
+.similar_programs
+{
+  background-color: #F5F5F5;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 110%;
+  color: #000000;
+  width: 50%;
+  padding: 10px;
+}
+
+
+.td_page
+{
+  background-color: #AED0F1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 110%;
+  color: #000000;
+}
+
+.td_page_active
+{
+  border-top: 1px solid #AED0F1;
+  border-left: 1px solid #AED0F1;
+  border-right: 1px solid #AED0F1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 110%;
+  font-weight: bold;
+  color: #000000;
+}
+
+
+.table_width {width: 100%;} 
+.td_color  {background: #C0C0C0} 
+
+
+table.dev_table tr td 
+{
+  background-color: #ffffff;
+}
+
+table.dev_table tr.dev_header td
+{
+background-color: #7789BC;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15pt;
+  font-weight: bold; 
+}
+
+p.dev_page_program_count
+{
+  font-family: Arial;  
+}
+
+.table_download {color: #808080}
+
+.block2_download {background: #E9EDF1; padding: 7px;}
+
+.vote_td {
+    border-bottom: 1px solid #E5E5E5; /* Параметры линии внизу */
+   }
+
+.informer {
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 95%; 
+    color: #000000; 
+    padding: 4px; /* Отступ между строками */
+    margin: 0px; /* Отступ от краёв */
+    border-bottom: 1px dashed #C0C0C0; /* Разделительная линия */   
+   }
+
+.informer_java {
+    padding: 10px; /* Отступ между строками */
+    margin-bottom: 0px; /* Отступ от краёв */
+    border-bottom: 1px dashed #FFFFFF; padding-bottom: 5px;
+    background-color: #5083D6;
+   }
+
+.social {
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 80%; 
+    color: #000000;
+    padding: 3px; /* Отступ между строками */
+    margin: 1px; /* Отступ от краёв */
+    border-bottom: 1px dashed #C0C0C0;     
+   }
+   
+.clear {
+    clear: left; /* Отмена обтекания */ 
+   }   
+   
+.block_navigation {
+  background: #5083D6;
+  height: 30px; 
+  font-weight: bold;
+  }
+
+.block_navigation_bot {  
+  background: #5083D6;
+  height: 30px;
+  font-family: Arial, Helvetica, sans-serif; 
+  font-size: 75%; 
+  color: #000000;
+  }
+   
+.block_title_left {
+  background: #5083D6; 
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #FFF;
+  height: 25px; 
+  width: 170px
+  }
+
+.block_title_left_java {
+  background: #F8F7F2; 
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;   
+  color: #000000;
+  font-size: 105%;
+  height: 27px; 
+  width: 170px;
+  border: 1px solid #C0C0C0;
+  }
+ 
+ .block_title_right {
+  background: #5083D6; 
+  font-family: Arial, Helvetica, sans-serif; 
+  font-weight: bold;
+  text-align: center;
+  color: #FFF;
+  height: 25px;
+  width: 245px
+  }
+  
+  .block_recommendation {
+  background: #81C64F; 
+  font-family: Arial, Helvetica, sans-serif; 
+  font-weight: bold;
+  text-align: center;
+  color: #FFF;
+  height: 25px;
+  width: 245px
+  }
+
+.search_button {
+  background: #F09100; 
+  color: white; 
+  border: 1px solid #FFF;
+  font-size: 8pt;
+  }
+
+.download_button {
+  width: 336px;
+  background: #7FB451;
+  background-color: #7FB451;
+  font-size: 24pt;
+  text-decoration: underline;
+  color: #F8F8F8; 
+  padding: 0.4em;
+  outline: none; /* убирать контур в Mozilla */
+  border: 1px solid #7FB451;
+  -moz-border-radius: 0.3em;
+  -webkit-border-radius: 0.3em;
+  -khtml-border-radius: 0.3em;  
+  border-radius: 0.3em;
+  box-shadow: inset 0 -2px 1px rgba(0,0,0,0), inset 0 1px 2px rgba(0,0,0,0), inset 0 0 0 60px rgba(255,255,0,0);
+  transition: box-shadow .2s, border-color .2s;
+  cursor: pointer;
+  }
+
+.download_button:hover  
+{  
+  background:linear-gradient(bottom,#9ACD32,#228B22);   
+  background:-webkit-linear-gradient(bottom, #9ACD32 5%,#228B22); /* для Chrome и Safari */ 
+  background:-o-linear-gradient(bottom,#9ACD32,#228B22); /* для Opera */ 
+  background:-moz-linear-gradient(bottom,#9ACD32,#228B22); /* для Firefox */ 
+  background:-ms-linear-gradient(bottom,#9ACD32,#228B22); /* для IE10+ */  
+  text-decoration: none;  
+} 
+
+.download_button:active {
+  padding: calc(.35em + 1px) .5em calc(.35em - 1px);  
+  background:linear-gradient(bottom,#228B22,#9ACD32);    
+  background:-webkit-linear-gradient(bottom, #228B22 5%,#9ACD32); /* для Chrome и Safari */ 
+  background:-o-linear-gradient(bottom,#228B22,#9ACD32); /* для Opera */ 
+  background:-moz-linear-gradient(bottom,#228B22,#9ACD32); /* для Firefox */ 
+  background:-ms-linear-gradient(bottom,#228B22,#9ACD32); /* для IE10+ */  
+  text-decoration: none;  
+}
+
+label.error {display:block; color:red; font-family: Arial, Helvetica, sans-serif; font-size: 95%;}
+
+embed, object {
+  display: block; /* Центрирование видео */ 
+  margin: 0 auto;
+}
+
+embed, iframe {
+  display: block; /* Центрирование видео */ 
+  margin: 0 auto;
+}
+
+}
+
+/**********************************************/
+/* The second file for mobile smaller than 730 */
+/**********************************************/
+
+@media (max-width: 730px) {
+
+.mobile_left {display: none;}
+.mobile_right {display: none;}
+
+.form_faq {width: 100%;} 
+.form_soft {width: 100%;}
+.nav_mobile {display: none;} 
+.small_screen {display: none;} 
+.download_image {display: none;}
+.mobile {display: none;} 
+.only_mobile {display: block;}
+
+.scrollup{
+width:40px;
+height:40px;
+opacity:0.3;
+position:fixed;
+bottom:50px;
+right:100px;
+display:none;
+text-indent:-9999px;
+background: url('top.png') no-repeat;
+}
+
+.software_table {   
+    border: 1px solid #329900;
+    padding: 2px; 
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+.faq_arhive {   
+    font-family: Arial, Helvetica, sans-serif; 
+	font-size: 95%; 
+	color: #000000;
+	background-color: #F2F2F2;
+	width: 80%;
+	border: 1px solid #000000;
+    padding: 5px; 
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+}
+
+.ya_table {   
+    font-family: Arial, Helvetica, sans-serif; 
+	font-size: 95%; 
+	color: #000000;
+	background-color: #F2F2F2;
+	width: 80%;
+	border: 1px solid #000000;
+    padding: 5px; 
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+}
+
+.informer_design {
+background-color: #F5F5F5; 
+} 
+
+a:link {text-decoration: none; color: #0033cc}
+a:visited {text-decoration: none; color: #0033cc}
+a:hover {text-decoration: underline; color: #000080}
+a:link.softmenu {text-decoration: underline; color: #000000}
+a:visited.softmenu {text-decoration: underline; color: #000000}
+a:hover.softmenu {text-decoration: underline; color: #808080}
+a:link.softmenu_bold {text-decoration: underline; color: #000000; font-weight: bold;}
+a:visited.softmenu_bold {text-decoration: underline; color: #000000; font-weight: bold;}
+a:hover.softmenu_bold {text-decoration: underline; color: #808080; font-weight: bold;}
+a:link.up {text-decoration: underline; color: #FFFFFF}
+a:visited.up {text-decoration: underline; color: #FFFFFF}
+a:hover.up {color: #FFFFFF; text-decoration: underline; BACKGROUND: #ADC2EB}
+
+a:link.raiting_java {text-decoration: none; color: #FFFFFF}
+a:visited.raiting_java {text-decoration: none; color: #FFFFFF}
+a:hover.raiting_java {color: #FFFFFF; text-decoration: underline;}
+
+.table_program {border: 1px solid #C0C0C0; width: 100%;}
+
+.up  {font-family: Arial, Helvetica, sans-serif; font-size: 100%; color: #FFFFFF; padding: 2px;}
+.upup  {font-family: Arial, Helvetica, sans-serif; font-size: 100%; color: #FFFF99}
+.text {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #000000}
+.rekl {font-family: Arial, Helvetica, sans-serif; font-size: 80%; color: #333333} 
+.blue {color: #336699}
+.comment {border-bottom: 1px dashed #C0C0C0; padding-bottom: 5px;}
+
+.nav_up  {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #FFFFFF; BACKGROUND: #93AFE6} 
+.category  {color:  #FFFFFF;  background-color: #7D838C;}
+.new {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #ffffff; background-color: #FF9933}
+.raiting {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #000000;}
+.soft_bold2  {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #666666; font-weight: bold;} 
+.soft {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #000000} 
+.soft_gray {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #808080}
+.soft_vote  {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #000000}
+.soft_small  {font-family: Arial, Helvetica, sans-serif; font-size: 80%; color: #808080}
+.soft_small1 {font-family: Arial, Helvetica, sans-serif; font-size: 80%; color: #000000}
+.soft_category {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #000000} 
+.soft_screen {font-family: Arial, Helvetica, sans-serif; font-size: 75%; color: #000000}
+.soft_italic {font-size: 95%; color: #000000; font-style: italic;}
+.soft_bold  {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #000000; font-weight: bold;} 
+.soft_bold_white  {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #ffffff; font-weight: bold;}
+.soft_bold_light  {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #333333; font-weight: 200;}
+.soft_question {font-family: Arial, Helvetica, sans-serif; font-size: 105%; color: #ffffff; background-color: #0066ff;}
+.soft_number {font-family: Arial, Helvetica, sans-serif; font-size: 140%; font-weight: bold; color: #ffffff; background-color: #7789BC;}
+.soft_head2 {font-family: Arial, Helvetica, sans-serif; font-weight: bold;} 
+.soft_download {font-family: Arial, Helvetica, sans-serif; font-size: 130%; color: #000000; font-weight: bold;} 
+.soft_comment {font-family: Arial, Helvetica, sans-serif; font-size: 90%; color: #000000} 
+.question {font-family: Arial, Helvetica, sans-serif; FONT-WEIGHT: bold; font-size: 110%; color: #000000} 
+.soft_add_error {font-family: Arial, Helvetica, sans-serif; font-size: 120%; color: #ff0000; font-weight: bold;}
+.soft_add_success {font-family: Arial, Helvetica, sans-serif; font-size: 120%; color: #008000; font-weight: bold;}
+.soft_link_bold {font-family: Arial, Helvetica, sans-serif; font-size: 95%; font-weight: bold;}
+.rb {font-family: Arial, Helvetica, sans-serif; font-size: 75%; color: #000000} 
+.soft_big {font-family: Arial, Helvetica, sans-serif; FONT-WEIGHT: bold; font-size: 110%; color: #000000;} 
+.soft_bigger {font-family: Arial, Helvetica, sans-serif; font-size: 110%; color: #000000;}
+.soft_navig {font-family: Arial, Helvetica, sans-serif; font-size: 110%; color: #000000;} 
+.raiting_java {font-family: Arial, Helvetica, sans-serif; font-size: 95%; color: #FFFFFF; FONT-WEIGHT: bold;}
+.faq_question {font-family: Arial, Helvetica, sans-serif; font-size: 85%; font-weight: bold; color: #ffffff; background-color: #6C93DB;}
+
+h1 {font-family: Arial, Helvetica, sans-serif; FONT-WEIGHT: bold; font-size: 120%; color: #000000}
+h2 {font-family: Arial, Helvetica, sans-serif; FONT-WEIGHT: bold; font-size: 115%; color: #000000}
+h3 {font-family: Arial, Helvetica, sans-serif; FONT-WEIGHT: bold; font-size: 110%; color: #000000}
+h4 {font-family: Arial, Helvetica, sans-serif; FONT-WEIGHT: bold; font-size: 105%; color: #000000}
+
+.bread_crumb {font-family: Arial, Helvetica, sans-serif; font-size: 75%; color: #000000}
+.bread_crumb_bottom {padding: 5px}
+
+.bot_line {
+    border-bottom: 1px dashed #C0C0C0; /* Разделительная линия */
+   }
+
+.short_comments
+{
+  background-color: #ECEEFD;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 110%;
+  color: #000000;
+  padding: 10px;
+}
+
+.similar_programs
+{
+  background-color: #F5F5F5;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 110%;
+  color: #000000;
+  width: 50%;
+  padding: 10px;
+}
+
+
+.td_page
+{
+  background-color: #AED0F1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 110%;
+  color: #000000;
+}
+
+.td_page_active
+{
+  border-top: 1px solid #AED0F1;
+  border-left: 1px solid #AED0F1;
+  border-right: 1px solid #AED0F1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 110%;
+  font-weight: bold;
+  color: #000000;
+}
+
+
+.table_width {width: 100%;} 
+.td_color  {display: none;} 
+
+
+table.dev_table tr td 
+{
+  background-color: #ffffff;
+}
+
+table.dev_table tr.dev_header td
+{
+background-color: #7789BC;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15pt;
+  font-weight: bold; 
+}
+
+p.dev_page_program_count
+{
+  font-family: Arial;  
+}
+
+.table_download {color: #808080}
+
+.block2_download {background: #E9EDF1; padding: 7px;}
+
+.vote_td {
+    border-bottom: 1px solid #E5E5E5; /* Параметры линии внизу */
+   }
+
+.informer {
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 95%; 
+    color: #000000; 
+    padding: 4px; /* Отступ между строками */
+    margin: 0px; /* Отступ от краёв */
+    border-bottom: 1px dashed #C0C0C0; /* Разделительная линия */   
+   }
+
+.informer_java {
+    padding: 10px; /* Отступ между строками */
+    margin-bottom: 0px; /* Отступ от краёв */
+    border-bottom: 1px dashed #FFFFFF; padding-bottom: 5px;
+    background-color: #5083D6;
+   }
+
+.social {
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 80%; 
+    color: #000000;
+    padding: 3px; /* Отступ между строками */
+    margin: 1px; /* Отступ от краёв */
+    border-bottom: 1px dashed #C0C0C0;     
+   }
+   
+.clear {
+    clear: left; /* Отмена обтекания */ 
+   }   
+   
+.block_up {
+  background: #5083D6;
+  background-position: top; /* Положение фона */
+  -moz-border-radius-topleft: 0.8em;
+  -moz-border-radius-topright: 0.8em;
+  -webkit-border-top-left-radius: 0.8em;
+  -webkit-border-top-right-radius: 0.8em;
+  -khtml-border-top-left-radius: 0.8em;
+  -khtml-border-top-right-radius: 0.8em;
+  border-top-left-radius: 0.8em;
+  border-top-right-radius: 0.8em;
+  padding: 0.8em;
+  margin-top: 0.8em;
+}  
+  
+.block_bot {
+  background: #1C1C1C;
+  background-position: bottom; /* Положение фона */
+  font-family: Arial, Helvetica, sans-serif; 
+  font-size: 75%; 
+  color: #A6A6A6;
+  padding: 5px;
+  -moz-border-radius-bottomleft: 0.8em;
+  -moz-border-radius-bottomright: 0.8em;
+  -webkit-border-bottom-left-radius: 0.8em;
+  -webkit-border-bottom-right-radius: 0.8em;
+  -khtml-border-bottom-left-radius: 0.8em;
+  -khtml-border-bottom-right-radius: 0.8em;
+  border-bottom-left-radius: 0.8em;
+  border-bottom-right-radius: 0.8em;
+  padding: 0.8em;
+  margin-bottom: 0.8em;
+  } 
+
+.bot  {color: #F5F5F5; padding: 2px;}
+a:link.bot {text-decoration: underline; color: #A6A6A6}
+a:visited.bot {text-decoration: underline; color: #A6A6A6}
+a:hover.bot {color: #F5F5F5; text-decoration: underline; BACKGROUND: #ADC2EB}
+   
+.block_navigation {
+  background: #5083D6;
+  height: 30px; 
+  font-weight: bold;
+  }
+
+.block_navigation_bot {  
+  background: #5083D6;
+  height: 30px;
+  font-family: Arial, Helvetica, sans-serif; 
+  font-size: 75%; 
+  color: #000000;
+  }
+   
+.block_title_left {
+  background: #5083D6; 
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #FFF;
+  height: 25px; 
+  width: 170px
+  }
+
+.block_title_left_java {
+  background: #F8F7F2; 
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;   
+  color: #000000;
+  font-size: 105%;
+  height: 27px; 
+  width: 170px;
+  border: 1px solid #C0C0C0;
+  }
+ 
+ .block_title_right {
+  background: #5083D6; 
+  font-family: Arial, Helvetica, sans-serif; 
+  font-weight: bold;
+  text-align: center;
+  color: #FFF;
+  height: 25px;
+  width: 245px
+  }
+
+.search_button {
+  background: #F09100; 
+  color: white; 
+  border: 1px solid #FFF;
+  font-size: 8pt;
+  }
+
+.download_button {
+  width: 336px;
+  background: #7FB451;
+  background-color: #7FB451;
+  font-size: 24pt;
+  text-decoration: underline;
+  color: #F8F8F8; 
+  padding: 0.4em;
+  border: 1px solid #7FB451;
+  cursor: pointer;
+  }
+
+.download_button:hover  
+{  
+  background:linear-gradient(bottom,#9ACD32,#228B22);   
+  background:-webkit-linear-gradient(bottom, #9ACD32 5%,#228B22); /* для Chrome и Safari */ 
+  background:-o-linear-gradient(bottom,#9ACD32,#228B22); /* для Opera */ 
+  background:-moz-linear-gradient(bottom,#9ACD32,#228B22); /* для Firefox */ 
+  background:-ms-linear-gradient(bottom,#9ACD32,#228B22); /* для IE10+ */  
+  text-decoration: none; 
+} 
+
+.download_button:active {
+  padding: calc(.35em + 1px) .5em calc(.35em - 1px);  
+  background:linear-gradient(bottom,#228B22,#9ACD32);    
+  background:-webkit-linear-gradient(bottom, #228B22 5%,#9ACD32); /* для Chrome и Safari */ 
+  background:-o-linear-gradient(bottom,#228B22,#9ACD32); /* для Opera */ 
+  background:-moz-linear-gradient(bottom,#228B22,#9ACD32); /* для Firefox */ 
+  background:-ms-linear-gradient(bottom,#228B22,#9ACD32); /* для IE10+ */  
+  text-decoration: none;   
+}
+
+label.error {display:block; color:red; font-family: Arial, Helvetica, sans-serif; font-size: 95%;}
+
+embed, object {
+  display: block; /* Центрирование видео */ 
+  margin: 0 auto;
+}
+
+embed, iframe {
+  display: block; /* Центрирование видео */ 
+  margin: 0 auto;
+}
+
+}
