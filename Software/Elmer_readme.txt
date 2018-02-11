@@ -3,7 +3,7 @@ Used verion 8.2 release.
 See pdfs in GarfieldPP_transparency/software_pdfs
 
 	1) gmsh's .msh file must be converted by ElmerGrid.exe in cmd:
-cmd>Elmer/bin/ElemerGrid.exe 14 2 gmsh_output.msh -autoclean
+cmd>Elmer/bin/ElmerGrid.exe 14 2 gmsh_output.msh -autoclean
 (see pdf, but 14 2 is some format codes and -autoclean makes some optimizations) Output files are in ElmerGrid.exe/models
 	1.5) In order to check that the mesh format is right, open .elements file (as it is typically huge use Vim editor).
 There must be 510 code and 10 numbers after in each line.
@@ -39,3 +39,9 @@ e.g:
 4 1.01
 
 Mind that this is description of volumes, not materials of Elmer.
+===========================================================================================================================
+In order to decrease memory consuption (and actually time for loading model) ElmerSolver can be run via terminal:
+	>cd to folder containing mesh
+	>ElmerSolver path/to/solution.sif.bla.bla
+Mind that Elmer libs and bin must be set in LD_LIBRARY_PATH and PATH correspondly (as in official manual).
+No modification to Mesh DB line in .sif header required.

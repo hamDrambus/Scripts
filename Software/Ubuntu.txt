@@ -1,0 +1,102 @@
+-------- window width ------- ------------- ----------- --------- ---------- ------- --------- --------- window width: ------|
+ 0) It's better to use Dolphin File Manager (default in SL7):
+	via Software Center (easier than using bash)
+
+ 1) Ubuntu 15.10 GUI copy bug: coping form shared directory (owned by root, I gather this is the issue for any not user ownned
+directory, but haven't checked) to some directory will fail if files with such names had been already copied to the target
+location, even if they were later removed! Instead of coping of new files old ones are either stay or restored. This was on
+Oracle Virtual Box machine. Use terminal's >cp $from_file $to_file instead.
+
+ 2) Virtual Box can change the number of processors without worry in between guest OS launch.
+
+ 3) mouting shared folder:
+Install virtual drive drivers: VBox's menu (left Ctrl+Home by default): Devices->Insert Guest Additions CD Image
+then auto installation will run
+
+	>sudo -i //enter root
+	>password entering
+	>mount -t vboxsf $HostFolderNameInVirtualBox $where to mount (must exist - not created)
+change of owner (does not seem to work):
+	>chown $USER -R $path_to_folder //$USER is a real env. var.
+	>exit //from root
+
+ 5) paths:
+starting with / - absolute paths
+/home/perser/Documets - standart Documents folder for user named perser
+not starting with / - relative paths
+../  - parent dir
+
+ 6)Commands
+echo - display:
+	>echo $GARFIELD_HOME
+prints the value of GARFIELD_HOME environment variable
+	>export GARFIELD_HOME=/home/perser/Documents/GarfieldPP
+	>export HEED_DATABASE=$GARFIELD_HOME/Heed/heed++/database
+creates env. variables
+	>source $file_name.sh
+runs .sh file. Works when simple file_name.sh is denied access.
+use this command to initialize root env. vars. (thisroot.sh)
+https://superuser.com/questions/46139/what-does-source-do
+	>cp $from_file $to_file
+copy
+	>ls
+list directories
+	>rmdir
+removes dir
+	>apt-get target install $package_name
+loads and installs package
+	>./CellTest
+executes CellTest program (in the same directory)
+	>command && (command1 ; command2) || (command3)
+executes command. If it exists with error code (returns not 0) command3 executed otherwise command1 and 2 are consecuvely
+executed. If any fails 3 executed.
+example:>make && (echo -e "make ok\n"; .Cell)|| (echo -e "make error\n")
+-e flag enables special characters
+; allows several commands in one line
+
+ 7) In order to change vhd disk location in the host OS modification of Oracle VM file required, it is impossible to do
+via GUI (disconnecting disk, relocating it and connecting again yields 'the disk with number ... is already registered' error)
+Go to C:\Users\$(USER_NAME)\VirtualBox VMs\$(VM_NAME) and change disk path in the .vbox file.
+
+ 8) Installing SWAP disk (optionnaly may delete previous swap):
+	1) Add disk to virtual machine
+	2) Format it (was done via Disks GUI programm)
+	3) (NOT optionally for the swap disk:) set mount options (mount at startup, select label and mount point(folder))
+	4) In mounted point (/media/perser/swapDisk in my case) create a file with desired swap size):
+>fallocate -l 21g /media/perser/swapDisk/swap
+(if file size exceeds available space file will be created with all available space used)
+	5) >sudo chmod 600 /media/perser/swapDisk/swap
+For security
+	6) >sudo mkswap /media/perser/swapDisk/swap
+	7) >sudo swapon /media/perser/swapDisk/swap
+Now swap is set up but after reboot 'sudo swapon /media/perser/swapDisk/swap' will have to be repeated.
+	8) In order to set up swap at setup add line to /etc/fstab (i.g. via >sudo gedit /etc/fstab):
+	/media/perser/swapDisk/swap none swap sw 0 0
+Beware that this line must go after /media/perser/swapDisk has been mounted (that's why 3rd point was required, note that
+disk mount is listed in the /etc/fstab), because file can't be used as swap if system has not connected the disk
+containing it yet. In case of automount of swap disk this line has no effect.
+
+ 9) Setting environment variables and launching scripts at statup.
+	1) move .sh script to /etc/profile.d
+Note that LD_LYBRARY_PATH is an exception and can only be set interactively in terminal or using /etc/ld.so.conf.d/*.conf
+configuration files. (Required for Elmer for example)
+	2) Add files to /etc/ld.so.conf.d/*.conf with path to libraries, e.g.:
+	>sudo touch /etc/ld.so.conf.d/elmer.conf
+	add "/mnt/formerSwap/Elmer/install/lib" to that file
+	and >sudo ldconfig
+		(only once, not required at the system boot)
+
+	3) //UPD: does not work.// Also mounting is impossible in /etc/profile.d, so mounting shared with Host folder must be
+done via 
+	adding <name_of_share>   /path/to/mountpoint   vboxsf   <options>  0   0
+	to the /etc/fstab file:
+		1) For mount of shared with host folder to be available user (perser in my case) must be int vboxsf group:
+		>sudo usermod -a -G groupName userName
+		>sudo usermod -a -G vboxsf perser	
+		2) Next instead of
+		>sudo mount -t vboxsf SharedVirt /home/perser/Shared
+		use 
+		SharedVirt   /home/perser/Shared   vboxsf   auto  0   0
+		in the /etc/fstab
+	3) >sudo mount -t vboxsf SharedVirt /home/perser/Shared
+Only this seems to work

@@ -32,3 +32,6 @@ Volume section (for every volume it is part of) and the surfaces block. Mind 'Ap
 be not applied (size fields take effect on reload, but Tool->Options discard at relaunch).
 	7) Importing solidworks' files (and I gather other cAD geometries) will result in double surface which is
 unacceptable.
+	8) Only background size field is used for meshing. In order to create 2 separate regions with finer mesh, use
+Field[3] = Min; It takes minimum of several fields (Field[3].FieldsList = {1,2,10};) at each point. There are also
+other types of size fields.

@@ -1,12 +1,15 @@
+-------- window width ------- ------------- ----------- --------- ---------- ------- --------- --------- window width: ------|
 
- 1) Ubuntu 15.10 GUI copy bug: coping form shared directory (owned by root this mayu be the issue for any not user ownned
-directory, but I haven't checked) to some directory will fail if files with such names had been already copied to the target
+ 1) Ubuntu 15.10 GUI copy bug: coping form shared directory (owned by root, I gather this is the issue for any not user ownned
+directory, but haven't checked) to some directory will fail if files with such names had been already copied to the target
 location, even if they were later removed! Instead of coping of new files old ones are either stay or restored. This was on
 Oracle Virtual Box machine. Use terminal's >cp $from_file $to_file instead.
 
  2) Virtual Box can change the number of processors without worry in between guest OS launch.
 
- 3) mouting shared folder:
+ 3) makefile example with several files is present in GarfieldPP_transparency/reproducing_Sauli/CellTest dir.
+
+ 4) mouting shared folder:
 Install virtual drive drivers: VBox's menu (left Ctrl+Home by default): Devices->Insert Guest Additions CD Image
 then auto installation will run
 
@@ -17,13 +20,13 @@ change of owner (does not seem to work):
 	>chown $USER -R $path_to_folder //$USER is a real env. var.
 	>exit //from root
 
- 4) paths:
+ 5) paths:
 starting with / - absolute paths
 /home/perser/Documets - standart Documents folder for user named perser
 not starting with / - relative paths
 ../  - parent dir
 
- 5)Commands
+ 6)Commands
 echo - display:
 	>echo $GARFIELD_HOME
 prints the value of GARFIELD_HOME environment variable
@@ -51,6 +54,7 @@ example:>make && (echo -e "make ok\n"; .Cell)|| (echo -e "make error\n")
 -e flag enables special characters
 ; allows several commands in one line
 
- 6) Regarding garfield++:
-  Compile via make. not CMake - fails to find ROOT openGL related library.
+ 7) Regarding garfield++
+
+Compile via make. not CMake - fails to find ROOT openGL related library.
 see GarfieldPP_readme.txt

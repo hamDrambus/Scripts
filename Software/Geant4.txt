@@ -3,42 +3,82 @@ geant4 v10.00.p04
 create build folder (e.g. .../labware/geant4_10.00.p04/build)
 //the main geant folder is .../labware/geant4_10.00.p04
 
-Qt must be installed
+!!! Qt must be installed
+!!! Visual Studio 2015 is required. Attempts to use VS2013 and VS2013 CPT_Nov2013 have failed at Geant10.00.p04,
+Geant10.04, Geant10.01.p03 and Geant10.02.p03. Source code fixes were required for 10.04 for CPT_Nov2013 IIRC
+(plain VS2013 is incompatible with v10.04).
+
 Mind that env vars of Qt must be set in installed locations, not in the source code!
-In my case F:\Qt_5.7.0\src-5.7.0 is source folder and F:\Qt-5.7.0\ is an install folder
+In my case F:\Qt_5.7.0\src-5.7.0 is source folder and F:\Qt_5.7.0\ is an install folder
 	Env_vars (not created by me, but I deleted "\src-5.7.0" in them so they point to the install locations):
 	QT_QPA_PLATFORM_PLUGIN_PATH=F:\QT_5.7.0\plugins\platforms
-	Qt5Core_DIR=F:\Qt_5.7.0lib\cmake\Qt5Core
+	Qt5Core_DIR=F:\Qt_5.7.0\lib\cmake\Qt5Core
 	QTDIR=F:\Qt_5.7.0
 Also Path =
 ...;F:\Qt_5.7.0\src-5.7.0\gnuwin32\bin;F:\Qt_5.7.0\src-5.7.0\qtbase\bin;...;F:\Qt_5.7.0\lib;F:\Qt_5.7.0\qtbase\include;F:\Qt_5.7.0\bin;F:\Qt_5.7.0\qtbase\bin
 
-1) cmd to build folder (or better use git bash)
+06.02.2018 UPD: it's all wrong for some reason. The first thing is Qt must be installed not from the source but by the
+installer (.exe). Mind to use 32bit (mb 64 is good, but in must be the same as Geant4 platform) and appropriate visual
+studio (2015, because all of the sudden geant4 code compiled in the vs2013 fails to run (std::bad_alloc crush at examples
+as Geant4 classes constructors, or NULL result of find_particle(char*))).
+	0) If only set QT_QPA_PLATFORM_PLUGIN_PATH, Qt5Core_DIR, QTDIR and PATH, Qt5 won't be found (cmake will write
+that it failed to find Qt4 as it is fallback). Error will be in 117 line of $G4/cmake/modulles/Geant4InterfaceOptions.cmake
+By looking into the code there and using MESSAGE("bla-bla") I determined that
+	Qt5Gui_DIR
+	Qt5Widgets_DIR
+	Qt5OpenGL_DIR
+	Qt5PrintSupport_DIR
+	Qt5Core_DIR
+must be set to the folders corresponding to the *Config.cmake files (something like $Qt_Installation\lib\cmake\Qt5<Module>)
+where in case of installing precompiled version Qt_Installation=F:\Qt5.7.1\Qt5.7\msvc2015
+or F:\Qt_5.7.1\qtbase for in-source manual build (Also don't use outsource build).
+Whether QTDIR is required at all is unclear. PATH is mandatory for sure as VS will look there for includes, libs and qmake.
+Also	QMAKESPEC=F:\Qt5.7.1\5.7\msvc2015\mkspecs\winrt-x86-msvc2015
+and	QT_QPA_PLATFORM_PLUGIN_PATH=F:\Qt5.7.1\5.7\msvc2015\plugins\platforms
+are necessary. Paths may differ for the different ways of installing (build from source vs precompiled) and obv. for
+different install locations.
 
-2) "F:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\vsvars32.bat"
+Sidenote: Compiling unrelated to Geant4 Qt program for build from source Qt is ok. No crushes that is.
+//END OF 06.02.2018 UPD
 
-3) See official installation guide and cmake parameters
+1) Open VisualStudio 2015 command prompt.
 
-4) cmake -G "Visual Studio 12 2013" -DCMAKE_INSTALL_PREFIX="F:\Bitch\Desktop\Top\5th year\labware\geant4_10.00.p04\install" -DGEANT4_USE_QT=ON -DCMAKE_PREFIX_PATH="F:\Qt_5.7.0\qtbase\lib\cmake\Qt5" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DGEANT4_INSTALL_DATA=ON ../
-//-DGEANT4_INSTALL_DATADIR="F:\Bitch\Desktop\Top\5th year\labware\geant4_10.02.p02\install\share\Geant4-10.2.2\data"
+2) "F:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\vsvars32.bat" for vs2013
+or "F:\Program Files (x86)\Visual Studio Community 2015\Common7\Tools\vsvars32.bat" for vs2015
+
+3) See official installation guide for cmake parameters. Qt-related problems are covered briefly.
+
+4) cmake -G "Visual Studio 12 2013" -DCMAKE_INSTALL_PREFIX="F:\Username\Desktop\Top\5th year\labware\geant4_10.00.p04\install" -DGEANT4_USE_QT=ON -DCMAKE_PREFIX_PATH="F:\Qt_5.7.0\qtbase\lib\cmake\Qt5" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DGEANT4_INSTALL_DATA=ON ../
+//-DGEANT4_INSTALL_DATADIR="F:\Username\Desktop\Top\5th year\labware\geant4_10.02.p02\install\share\Geant4-10.2.2\data"
 //ARM DOEST NOT mean x32, for x64 write Win64 (mind that Qt also must be x64 then)
 //for x32 write nothing
 
-5) build/Geant4.sln - visual studio project, build it in order to finish installation
-//No cmake --build . --config RelWithDebInfo
-//or cmake --build . --config RelWithDebInfo --target install
+06.02.2018 UPD: Fails as well. I managed to with vs2013 build after tedious source code fixes,
+but geant4 constructors crush. Use (-G "Visual Studio 14 2015" is default if VS2015 have been isntalled (even if deleted later))
+   cmake -DCMAKE_INSTALL_PREFIX="F:\Username\Desktop\Top\5th year\labware\geant4_10.02.p03\install" -DGEANT4_USE_QT=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo -DGEANT4_INSTALL_DATA=ON ../
+23.01.2018 UPD (geant4 v10.04): 
+   cmake -G "Visual Studio 12 2013" -T "CTP_Nov2013" -DCMAKE_INSTALL_PREFIX="F:\Username\Desktop\Top\5th year\labware\geant4_10.04\install" -DGEANT4_USE_QT=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo -DGEANT4_INSTALL_DATA=ON ../
+//END OF 23.01.2018 UPD
+//END OF 06.12.2018 UPD
 
-6) select INSTALL project and build it (probably can be 5th step as it will build all the rest).
-It will actually install, not only build 
+5) 3 equivalent (in theory) ways:
+ 1) may use build/Geant4.sln - visual studio project, build it in order to finish installation
+ then select INSTALL project and build it (probably can build only this one), it will actually install, not only build
 
-7) cmake examples. For this Geant4Config.cmake fix is requred - 
+ 2) or "cmake --build . --config RelWithDebInfo" //if this one is chosen then the line below must be run as well.
+
+ 3) or "cmake --build . --config RelWithDebInfo --target install"
+ 
+
+6) cmake examples. For this Geant4Config.cmake fix is requred - 
 geant4 module requres Qt4 even so it has Qt5 and so find_package(Qt4 REQUIRED) line (228 or 244, it depends)
 in Geant4Config.cmake must be commented (# is comment). File location can be seen if tried cmaking examples without the fix.
 
-8) set exampleB1 (e.g.) as startup project (right click). Otherwise it will try launch ALL_BUILD.exe which is not created.
+7) set exampleB1 (e.g.) as startup project (right click). Otherwise it will try launch ALL_BUILD.exe which is not created.
 
-8.5) make sure data paths are set in environment variables. Otherwise at least B1 won't launch
+8) make sure data paths are set in environment variables. Otherwise at least B1 won't launch
 //"...\geant4_10.00.p04\install\share\Geant4-10.0.4\data" is path by default
 //google "geant4 data environment variables" for details
+//or configure with -DGEANT4_INSTALL_DATA=ON from the let-go.
 
 9) Use example's visual studio project (with tweaking the paths and names in the preferences) for your code.

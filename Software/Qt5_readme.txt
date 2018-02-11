@@ -10,3 +10,5 @@ see official website guide
 4) "src-5.7.0\configure" -prefix F:\Qt_5.7.0 -debug -nomake examples -opensource -platform win32-msvc2013
 
 //mind slashes in the paths! use \, not a /
+
+5) nmake
