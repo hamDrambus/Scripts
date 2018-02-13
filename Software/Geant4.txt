@@ -33,7 +33,7 @@ must be set to the folders corresponding to the *Config.cmake files (something l
 where in case of installing precompiled version Qt_Installation=F:\Qt5.7.1\Qt5.7\msvc2015
 or F:\Qt_5.7.1\qtbase for in-source manual build (Also don't use outsource build).
 Whether QTDIR is required at all is unclear. PATH is mandatory for sure as VS will look there for includes, libs and qmake.
-Also	QMAKESPEC=F:\Qt5.7.1\5.7\msvc2015\mkspecs\winrt-x86-msvc2015
+Also	QMAKESPEC=F:\Qt5.7.1\5.7\msvc2015\mkspecs\win32-msvc
 and	QT_QPA_PLATFORM_PLUGIN_PATH=F:\Qt5.7.1\5.7\msvc2015\plugins\platforms
 are necessary. Paths may differ for the different ways of installing (build from source vs precompiled) and obv. for
 different install locations.
