@@ -99,4 +99,22 @@ done via
 		SharedVirt   /home/perser/Shared   vboxsf   auto  0   0
 		in the /etc/fstab
 	3) >sudo mount -t vboxsf SharedVirt /home/perser/Shared
-Only this seems to work
+Only this seems to work 
+
+ 10) For Eclipse remote debugging:
+	Make /proc/sys/kernel/yama/ptrace_scope permanent to 0 by setting ptrace_scope to 0 in /etc/sysctl.d/10-ptrace.conf
+
+ 11) For Eclipse profiling (perf):
+	Install perf (google, via apt-get)
+Determine current value: >cat /proc/sys/kernel/perf_event_paranoid
+	How to change /proc/sys/kernel/perf_event_paranoid (to 0 or 1) (otherwise permission denied error):	   
+	add line
+		kernel.perf_event_paranoid=1
+	to /etc/sysctl.conf (Persistant change)
+	OR
+	sudo -i
+	echo 1 >/proc/sys/kernel/perf_event_paranoid
+	exit (Per session change)
+
+
+
