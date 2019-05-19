@@ -49,7 +49,11 @@ ffffff9d – for completely disabled
 	Reboot is required.
 After reboot, modify dll for 32 and 64 bit versions as well as cache (search by name in explorer). Reboot again (might be necessary to set SFCDisable back to 0).
 
-TODO: Diabling WFP is not an ideal fix, because windows scanner will detected "corrupted" files and will inform user about them (I did not test whether it actually will detect them). The proper way is to write patch/update .exe which will inform properly WFP about changes. I have an inkling writing semi-official patch is quite troublesome.
+sfc utility will detect corrupted dlls. Their hashes are stored in SysRoot/winsxs/Manifests. Hashes are stored for cached (copied) dlls only in SysRoot/winsxs which located in folders called something like "wow64_microsoft-windows-i..onal-keyboard-kbdus_31bf3856ad364e35_6.1.7601.17514_none_e72ccbf15f92e33c". There are no separate manifests for dlls in System32 or SysWOW64 because the dlls there should be the same as cached ones. Manifests also have copy in Backup folder.
+
+The powershell script changes hash values in the manifests to the new ones using log outup of sfc located in Windows/Logs/CBS/CBS.log. The issue is that sfc also checks correctnes of manifest files themselves using thier hash, which location I could not find. Even though replacing hashes does not fool sfc it does prevent dll names showing in the output (though their can be tracked as manifest names correspond to dll locations). sfc cannot repair dlls if they are repaced in all locations.
+
+TODO: find where hashes for manifest files are located and replace them via script to fully trick sfc. Or modify sfc binary code to never detect corrupted files (poor variant)
 ===============================================================================================================
 Sources:
 	<kbd.h> comments.
