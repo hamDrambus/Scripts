@@ -1,0 +1,23 @@
+1) Turn on 'stereo mixer' in sound recording devices
+
+2) Turn off 'microphone' in sound recording devices
+
+3) Launch Audacity
+
+4) MME, Sound redirection.
+
+5) Click at Recording level to start monotoring it
+
+6) Adjust sound so that recorded track reach about 0.8 in amplitude.
+
+7) Press record (red circle)
+
+8) Start sound to be recorded.
+
+9) Stop recording
+
+10) Trim audio
+
+11) Effects -> Normalize to 0.0 dB
+
+12) File->Export Audio
