@@ -4,6 +4,8 @@ Programming: CMake, Visual Studio, PyCharm, Git, Python 3, IDA Free (decompiler)
 Editors/Viewers: Audacity (audio), OpenOffice, MikTeX, Adobe Acrobat Reader, PotPlayer, InkScape, Krita, Calibre (to pdf converter), DjView
 	Dll examiner: DependencyWalker
 	Hex editors: HxD, Frhed, hiew32demo
+	
+File Manager: Explorer++
 
 Net: Hamachi, Tunngle, Tor 
 	Browsers: Chrome, Yandex
