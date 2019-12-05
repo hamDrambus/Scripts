@@ -1,0 +1,16 @@
+Windows 7:
+
+Programming: CMake, Visual Studio, PyCharm, Git, Python 3, IDA Free (decompiler), Qt, CERN ROOT
+Editors/Viewers: Audacity (audio), OpenOffice, MikTeX, Adobe Acrobat Reader, PotPlayer, InkScape, Krita, Calibre (to pdf converter), DjView
+	Dll examiner: DependencyWalker
+	Hex editors: HxD, Frhed, hiew32demo
+	
+File Manager: Explorer++
+
+Net: Hamachi, Tunngle, Tor 
+	Browsers: Chrome, Yandex
+	Chrome extensions: HTPPS everywhere, Emoji Keyboard by JoyPixels, setup VPN, speed dial, Google Translate customizer (mine), adnauseam, uBlock, Google Drive, SwitchyOmega
+
+Misc: WinRar, Magnifixer, Mathematica, Nero, SpeedCrunch, Oracle VBox, Компьютерный таймер, Live USB creator, RaidCall, Skype, ImgBurn, Steam, Battle.net, UVScreenCamera
+
+Custom: Capslock/Translator keyboard hook (Injector_v3), keyboard dll patch, chrome dll patch (developer mode warning)
