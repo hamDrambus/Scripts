@@ -46,9 +46,9 @@ see UbuntuAndGarfieldPP.txt readme
 -----------------------------------------------
 3) Garfield installation follows official guide with limitation of not using cmake - just use make. (mind thisroot.sh configure file)
 
-In order to compile example changes to makefile may be requred (are required if root libs are used)
+In order to compile example, changes to makefile may be requred (are required if root libs are used)
 	1) in makefile 'root-config --glibs' and 'root-config --cflags' and etc if any must be replaced by the output with root-config with corresponding options - this is paths to libs and compiler's options
-	2) swith order of library linkage (with corresponding flags) in LDFLAGS - dependent libs (=garfield) first (root - 2nd)
+	2) switch order of library linkage (with corresponding flags) in LDFLAGS - dependent libs (=garfield) first (root - 2nd)
 
 also for Heed usage env. var. required:
 	$ export HEED_DATABASE=$GARFIELD_HOME/Heed/heed++/database

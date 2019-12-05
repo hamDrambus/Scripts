@@ -116,5 +116,25 @@ Determine current value: >cat /proc/sys/kernel/perf_event_paranoid
 	echo 1 >/proc/sys/kernel/perf_event_paranoid
 	exit (Per session change)
 
+ 12) Archives:
+	create simple zip from "input" folder:
+	> zip -9 -r output.zip input
+	-r means recursion (zip subfolders). -9 is a mamimal compression level (slowest). default is -6 (from 0 to 9).
+	By default zip uses deflation algorithm. bzip2 may be better:
+	> zip -Z bzip2 -r output.bz2 input
+	But archive manager cannot view content of bz2 files.
+	Delete folder/files from existing archive (WILL unzip/create temporary .zip):
+	>zip -d foo foo/tom/junk foo/harry/\* \*.o
+	will  remove  the  entry  foo/tom/junk,  all  of  the  files  that  start  with
+	foo/harry/,  and  all  of  the files that end with .o (in any path).
+	It is not recursive, so if archive has files in 191128/f1/data1.dat, data2.dat ...
+	use >zip -d archive archive/190228/f1/\* to detele these files
 
+ 13) Remote disk (at lab)
+	Conntcted via File Manager
+	smb://192.168.162.104 download
+	To operate with it via bash mountpoint is required.
+	To get how File Manager set it: open it -> open in teminal.
+	In my case it's /run/user/1000/gvfs/smb-share:server=192.168.162.104,share=download/
+	Works as usual path.
 

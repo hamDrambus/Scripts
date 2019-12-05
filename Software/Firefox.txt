@@ -1,0 +1,2 @@
+Clear cache (may reach Gb level in ~/snap/firefox/common/... on Ubuntu):
+	Ctrl+shift+delete -> all time (everything)-> select required (cache)  
