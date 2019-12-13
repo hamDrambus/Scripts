@@ -104,7 +104,7 @@ Only this seems to work
  10) For Eclipse remote debugging:
 	Make /proc/sys/kernel/yama/ptrace_scope permanent to 0 by setting ptrace_scope to 0 in /etc/sysctl.d/10-ptrace.conf
 
- 11) For Eclipse profiling (perf):
+ 11) For Eclipse profiling (perf): //UPD: does not work at all
 	Install perf (google, via apt-get)
 Determine current value: >cat /proc/sys/kernel/perf_event_paranoid
 	How to change /proc/sys/kernel/perf_event_paranoid (to 0 or 1) (otherwise permission denied error):	   
@@ -138,3 +138,91 @@ Determine current value: >cat /proc/sys/kernel/perf_event_paranoid
 	In my case it's /run/user/1000/gvfs/smb-share:server=192.168.162.104,share=download/
 	Works as usual path.
 
+ 14) Lost files restoration
+	TestDisk:
+	> sudo apt-get install testdisk
+	To run it on the main device run
+	> sudo testdisk /dev/nvme0n1p2
+	To get disk mount locations use	
+	> sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL
+	to list devices and
+	> mount
+	to get mountpoints
+
+	testdisk is quite smart and will highlight correct choices to select by default
+	Up until Partition menu with [Type] [Superblock] [List] ... on the bottom
+	Select [List] there and navigate to lost file/folfer
+	Select them and copy to location where they should be restored
+	Note that they will be put in folder with whole path!
+	> sudo chown -R $USER Folder
+	To change user for whole folder (after resoration the file will be be owned by root) 
+
+  15) Profiling on Ubuntu using QtCreator:
+	Open QtCreator
+	Create new project - plain c++ console application
+	Build system - qmake
+	After that - .pro file contains projects setups
+
+	//For compiler flags use:
+	QMAKE_CXXFLAGS += -fPIC
+	QMAKE_CXXFLAGS += -pthread
+
+	QMAKE_LFLAGS += -fPIC
+	QMAKE_LFLAGS += -pthread
+	QMAKE_LFLAGS += -pipe
+
+	//For sources use:
+	SOURCES += \
+        src/ArgonParticle.cpp \
+        src/ArgonVanDerWaals.cpp \
+		... \
+		src/main.cpp
+	//Note that there is no '\' for the last file
+
+	//It you want to pass file as parameter to Qt-built console application, it is necessary to add this file: 
+	DISTFILES += \
+    	settings.xml
+
+	HEADERS += \
+		include/ArgonParticle.h \
+		include/ArgonVanDerWaalsParticle.h \
+		... \
+		include/ColoredInterval.h
+
+	unix:!macx: LIBS += -L$(HOME)/Software/root_v6.14.06/build/lib/ \
+		-lpthread \
+		-lGui \
+		-lCore \
+		-lRIO \
+		-lNet \
+		-lHist \
+		-lGraf \
+		-lGraf3d \
+		-lGpad \
+		-lTree \
+		-lRint \
+		-lPostscript \
+		-lMatrix \
+		-lPhysics \
+		-lMathCore \
+		-lThread \
+		-lMultiProc \
+		-lGeom \
+		-lm \
+		-lSpectrum \
+		-lThread
+
+	INCLUDEPATH += $(HOME)/Software/root_v6.14.06/build/lib
+	INCLUDEPATH += $(HOME)/Software/root_v6.14.06/build/include
+	INCLUDEPATH += $(HOME)/Software/boost_1_67_0
+	INCLUDEPATH += $(HOME)/Documents/QtThreeDimSimulation/QtThreeDimSimulation/include
+	DEPENDPATH += $(HOME)/Software/root_v6.14.06/build/lib
+	DEPENDPATH += $(HOME)/Software/root_v6.14.06/build/include
+	DEPENDPATH += $(HOME)/Software/boost_1_67_0
+	
+	After project setup:
+	Build app to check that everything is all right
+	Setting up build configurations (Working directory/{Release, Debug, Profile}, etc):
+	Left menu->Projects
+	
+	Profiling: Top Menu->Analyze->Performance Analyzer

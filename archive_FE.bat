@@ -1,4 +1,5 @@
 @Echo Off
+Rem -m0 - the lowest compession level, -m3 - defualt, -m5 - the maximal one
 
 SET infolder=180705
 SET outfolder=180705_caen_archive
