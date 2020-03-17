@@ -24,8 +24,13 @@ PYTHON_INCLUDE_DIRS are not pointing to the proper files. This is too some error
 option is required) -Ddgml=ON (cmake+garfieldPP writes that it can not find dgml component of ROOT so this is an attempt
 to fix it. It is unclear though whether this does work, I believe that OpenGL is also requred. With make+garfield
 everything works fine).
+-Dbuiltin_fftw3=ON (for Built the FFTW3 library internally (downloading tarfile from the Web) (ROOT 6 only))
+-Dfftw3=ON (Fast Fourier Transform support, requires libfftw3)
     So the command is (example):
-	$ cmake ../root-6.08.04 -Dgnuinstall=ON -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 -DPYTHON_LIBRARY=/usr/lib/python2.7/config-x86_64-linux-gnu/libpython2.7.so -Dbuiltin_gsl=ON -Dgdml=ON -DCMAKE_INSTALL_PREFIX=../../root-6.08.04
+	$ cmake ../root-6.08.04 -Dgnuinstall=ON -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 -DPYTHON_LIBRARY=/usr/lib/python2.7/config-x86_64-linux-gnu/libpython2.7.so -Dbuiltin_gsl=ON -Dgdml=ON -DCMAKE_INSTALL_PREFIX=../../root-6.08.04 -Dbuiltin_fftw3=ON
+	OR
+	$ cmake ../ -Dgnuinstall=ON -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 -DPYTHON_LIBRARY=/usr/lib/python2.7/config-x86_64-linux-gnu/libpython2.7.so -Dbuiltin_gsl=ON -Dgdml=ON -Dbuiltin_fftw3=ON -Dfftw3=ON
+
 OR libX11-devel
 make sure required componets (and python) are found
 
@@ -35,3 +40,5 @@ make sure required componets (and python) are found
 !!!run root-6.08.04/bin/thisroot.sh to configure env. var-s  - every time new terminal is opened
 	$ source bin/thisroot.sh
 see UbuntuAndGarfieldPP.txt readme
+
+To rebuild: delete build folder (with CMakeCache.txt) and run build again.
