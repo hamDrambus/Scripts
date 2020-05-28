@@ -129,6 +129,8 @@ Determine current value: >cat /proc/sys/kernel/perf_event_paranoid
 	foo/harry/,  and  all  of  the files that end with .o (in any path).
 	It is not recursive, so if archive has files in 191128/f1/data1.dat, data2.dat ...
 	use >zip -d archive archive/190228/f1/\* to detele these files
+	To add passwoed pretection use -p password:
+	>zip -p pass123 -9 -r output.zip input
 
  13) Remote disk (at lab)
 	Conntcted via File Manager
