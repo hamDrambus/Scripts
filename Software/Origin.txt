@@ -1,0 +1,13 @@
+Russian language in origin 8.0951 PRO plots (does not support unicode yet):
+	1) use Times New Roman CYR font (or other cyr - cyrrilic font):
+	\f:Times..CYR()
+	2.1) EITHER enter russian letters by their ascii codes (goodle cyr encoding table)
+		Hold ALT + (on numpud) 0 + letter's code to enter it
+	So, for example if мкс is inputed (0220 0218 0225):
+	\f:Times New Roman CYR(ìêñ)
+	it will be displayed as
+	мкс
+	2.2) OR use this http://string-functions.com/encodedecode.aspx site
+	to convert russian text from windows-1251 to utf-7 and neter the result into origin
+	So encoding-decoding site can be used to reverse the stuff happenning in origin 
+ 
