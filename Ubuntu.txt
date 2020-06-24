@@ -231,5 +231,5 @@ Determine current value: >cat /proc/sys/kernel/perf_event_paranoid
 
   16) convert all .*png to .pdf:
 	cd $folder_with_files
-	for f in $(find . -iname '*.png'); do convert "$f" "$f".pdf; done
+	for f in $(find . -name '*.png'); do convert "$f" "${f%.*png}.pdf"; done
 
