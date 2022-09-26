@@ -14,3 +14,7 @@ Net: Hamachi, Tunngle, Tor
 Misc: WinRar, Magnifixer, Mathematica, Nero, SpeedCrunch, Oracle VBox, Компьютерный таймер, Live USB creator, RaidCall, Skype, ImgBurn, Steam, Battle.net, UVScreenCamera
 
 Custom: Capslock/Translator keyboard hook (Injector_v3), keyboard dll patch, chrome dll patch (developer mode warning)
+
+Windows 10:
+
+Run as SYSTEM user: AdvancedRun from Nirsoft

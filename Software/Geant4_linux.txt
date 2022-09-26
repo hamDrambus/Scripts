@@ -1,0 +1,5 @@
+0) Install geant4 according to instructions with cmake
+1) Even when building apps with CMake
+source /home/frolov/Software/Geant4/geant4.10.04.p01-install/bin/geant4.sh
+is required on startup:
+"During the installation of your library and executable, the runtime paths to find the library are stripped from the executable. Therefore your library has to reside in the runtime library search path. For example under Linux, try to set LD_LIBRARY_PATH to the directory that contains the installed library when starting your executable."
