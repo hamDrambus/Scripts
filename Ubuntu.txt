@@ -233,3 +233,7 @@ Determine current value: >cat /proc/sys/kernel/perf_event_paranoid
 	cd $folder_with_files
 	for f in $(find . -name '*.png'); do convert "$f" "${f%.*png}.pdf"; done
 
+  17) Checking SSD health:
+    sudo smartctl -a /dev/nvme0
+  Do not use /dev/nvme0n1p1 - namespace or partition, otherwise there will be NVMe Status 0x4002 error.
+

@@ -1,0 +1,2 @@
+#list all the files currently being tracked under the branch master
+git ls-tree -r master --name-only 
