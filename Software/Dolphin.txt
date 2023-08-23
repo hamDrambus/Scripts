@@ -1,0 +1,3 @@
+Adding useful menus to right-click menu:
+Control->Configure Dolphin->Services->Download New Services...
+e.g. for compressing/decompressing use 7z Archive Compress... by intika (Full install)

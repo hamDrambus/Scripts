@@ -1,0 +1,13 @@
+To fix freeze-up on startup:
+	1) Delete [Workspace Directory]/.metadata/.plugins/org.eclipse.core.resources/.snap
+
+If haven't helped:
+	2) run eclispe with -clean and -refresh arguments:
+./eclipse -clean -refresh
+
+If 1-2) have not helped:
+	3) take a backup of .metadata folder(just in case you need to revert back) and delete the following directory:
+YOUR_WORKSPACE_HOME/.metadata/.plugins/org.eclipse.core.resources/.project
+or
+YOUR_WORKSPACE_HOME/.metadata/.plugins/org.eclipse.core.resources/.projects
+restart Eclipse problem should be solved

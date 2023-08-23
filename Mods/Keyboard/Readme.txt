@@ -17,9 +17,9 @@ virtual code where index corresponds to physical key on the keyboard. For exampl
 
 6) CharModifiers - translates bits defined in 5) to combination index. This combination index is later used for tables of vitual key to character correspondence. Ends in 10 0x00 bytes.
 
-7) Finally aVkToWch2[], aVkToWch3[] and aVkToWch4[] follow. These are tables of converting virtual keyt code into characted depending on modification state. Here keys are grouped by their total number of states.
+7) Finally aVkToWch2[], aVkToWch3[] and aVkToWch4[] follow. These are tables of converting virtual key code into characted depending on modification state. Here keys are grouped by their total number of states.
 
-8) aVkToWcharTable - stracture, holding pointers to all tables aVktoWch above, specifing thier dimensions and size.
+8) aVkToWcharTable - structure holding pointers to all tables aVktoWch above, specifing their dimensions and size.
 
 9) key names
 
@@ -51,7 +51,7 @@ After reboot, modify dll for 32 and 64 bit versions as well as cache (search by 
 
 sfc utility will detect corrupted dlls. Their hashes are stored in SysRoot/winsxs/Manifests. Hashes are stored for cached (copied) dlls only in SysRoot/winsxs which located in folders called something like "wow64_microsoft-windows-i..onal-keyboard-kbdus_31bf3856ad364e35_6.1.7601.17514_none_e72ccbf15f92e33c". There are no separate manifests for dlls in System32 or SysWOW64 because the dlls there should be the same as cached ones. Manifests also have copy in Backup folder.
 
-The powershell script changes hash values in the manifests to the new ones using log outup of sfc located in Windows/Logs/CBS/CBS.log. The issue is that sfc also checks correctnes of manifest files themselves using thier hash, which location I could not find. Even though replacing hashes does not fool sfc it does prevent dll names showing in the output (though their can be tracked as manifest names correspond to dll locations). sfc cannot repair dlls if they are repaced in all locations.
+The powershell script changes hash values in the manifests to the new ones using log output of sfc located in Windows/Logs/CBS/CBS.log. The issue is that sfc also checks correctnes of manifest files themselves using their hash, which location I could not find. Even though replacing hashes does not fool sfc it does prevent dll names showing in the output (though they can be tracked as manifest names correspond to dll locations). sfc cannot repair dlls if they are repaced in all locations.
 
 TODO: find where hashes for manifest files are located and replace them via script to fully trick sfc. Or modify sfc binary code to never detect corrupted files (poor variant)
 ===============================================================================================================

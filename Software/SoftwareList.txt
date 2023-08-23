@@ -18,3 +18,7 @@ Custom: Capslock/Translator keyboard hook (Injector_v3), keyboard dll patch, chr
 Windows 10:
 
 Run as SYSTEM user: AdvancedRun from Nirsoft
+
+Ubuntu:
+
+File manager: Dolphin
