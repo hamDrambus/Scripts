@@ -44,5 +44,5 @@ Mind that this is description of volumes, not materials of Elmer.
 ===========================================================================================================================
 In order to decrease memory consuption (and actually time for loading model) ElmerSolver can be run via terminal:
 	>cd to folder containing mesh
-	>ElmerSolver path/to/solution.sif.bla.bla
+	>ElmerSolver path/to/solution.sif
 No modification to Mesh DB line in .sif header required.

@@ -1,0 +1,3 @@
+Dear All, Our developers have already worked out a solution for user to using Foxit Reader together with Latext in Foxit Reader. It is using commandline to open PDF file with Foxit Reader with read-only mode if you want to using both of Foxit Reader and PDFLatext.
+The commandline is:
+[Foxit Reader.exe path] "PDF file path" /A nolock=1 

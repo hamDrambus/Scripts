@@ -101,10 +101,10 @@ done via
 	3) >sudo mount -t vboxsf SharedVirt /home/perser/Shared
 Only this seems to work 
 
- 10) For Eclipse remote debugging:
+10) For Eclipse remote debugging:
 	Make /proc/sys/kernel/yama/ptrace_scope permanent to 0 by setting ptrace_scope to 0 in /etc/sysctl.d/10-ptrace.conf
 
- 11) For Eclipse profiling (perf): //UPD: does not work at all
+11) For Eclipse profiling (perf): //UPD: does not work at all
 	Install perf (google, via apt-get)
 Determine current value: >cat /proc/sys/kernel/perf_event_paranoid
 	How to change /proc/sys/kernel/perf_event_paranoid (to 0 or 1) (otherwise permission denied error):	   
@@ -116,7 +116,7 @@ Determine current value: >cat /proc/sys/kernel/perf_event_paranoid
 	echo 1 >/proc/sys/kernel/perf_event_paranoid
 	exit (Per session change)
 
- 12) Archives:
+12) Archives:
 	create simple zip from "input" folder:
 	> zip -9 -r output.zip input
 	-r means recursion (zip subfolders). -9 is a mamimal compression level (slowest). default is -6 (from 0 to 9).
@@ -129,8 +129,10 @@ Determine current value: >cat /proc/sys/kernel/perf_event_paranoid
 	foo/harry/,  and  all  of  the files that end with .o (in any path).
 	It is not recursive, so if archive has files in 191128/f1/data1.dat, data2.dat ...
 	use >zip -d archive archive/190228/f1/\* to detele these files
+	To add password pretection use -e flag:
+	>zip -e -9 -r output.zip input
 
- 13) Remote disk (at lab)
+13) Remote disk (at lab)
 	Conntcted via File Manager
 	smb://192.168.162.104 download
 	To operate with it via bash mountpoint is required.
@@ -138,7 +140,7 @@ Determine current value: >cat /proc/sys/kernel/perf_event_paranoid
 	In my case it's /run/user/1000/gvfs/smb-share:server=192.168.162.104,share=download/
 	Works as usual path.
 
- 14) Lost files restoration
+14) Lost files restoration
 	TestDisk:
 	> sudo apt-get install testdisk
 	To run it on the main device run
@@ -157,7 +159,7 @@ Determine current value: >cat /proc/sys/kernel/perf_event_paranoid
 	> sudo chown -R $USER Folder
 	To change user for whole folder (after resoration the file will be be owned by root) 
 
-  15) Profiling on Ubuntu using QtCreator:
+15) Profiling on Ubuntu using QtCreator:
 	Open QtCreator
 	Create new project - plain c++ console application
 	Build system - qmake
@@ -226,3 +228,15 @@ Determine current value: >cat /proc/sys/kernel/perf_event_paranoid
 	Left menu->Projects
 	
 	Profiling: Top Menu->Analyze->Performance Analyzer
+
+16) convert all .*png to .pdf:
+	cd $folder_with_files
+	for f in $(find . -name '*.png'); do convert "$f" "${f%.*png}.pdf"; done
+
+17) Checking SSD health:
+    sudo smartctl -a /dev/nvme0
+  Do not use /dev/nvme0n1p1 - namespace or partition, otherwise there will be NVMe Status 0x4002 error.
+
+18) Finding and replacing every occurrence of oldtext with newtext in every text file under the /some/folder/ directory tree recursively:
+	grep -rl --include=\*.h oldtext . | xargs sed -i 's/oldtext/newtext/g'
+
