@@ -1,15 +1,8 @@
 //THIS IS TH COPY FROM GarfieldPP_readme.txt
 2) For ROOT the following packages required (beside preinstalled) https://root.cern.ch/build-prerequisites (via apt-get install <name>) (packages' names depend on OS):
-git
-dpkg-dev
-cmake
-binutils
+git dpkg-dev cmake binutils
 libx11-dev OR libX11-devel on SL7
-libxpm-dev
-libxft-dev
-libxext-dev
-libpng-dev
-libjpeg-dev
+libxpm-dev libxft-dev libxext-dev libpng-dev libjpeg-dev libxft-dev
 gfortran (this one is necessary for garfield)
 Recommeded (? not sure, but python support will not harm):
 python-dev (python 2.7 is pre-unstalled, but not its libraries)
@@ -30,8 +23,11 @@ everything works fine).
 	$ cmake ../root-6.08.04 -Dgnuinstall=ON -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 -DPYTHON_LIBRARY=/usr/lib/python2.7/config-x86_64-linux-gnu/libpython2.7.so -Dbuiltin_gsl=ON -Dgdml=ON -DCMAKE_INSTALL_PREFIX=../../root-6.08.04 -Dbuiltin_fftw3=ON
 	OR
 	$ cmake ../ -Dgnuinstall=ON -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 -DPYTHON_LIBRARY=/usr/lib/python2.7/config-x86_64-linux-gnu/libpython2.7.so -Dbuiltin_gsl=ON -Dgdml=ON -Dbuiltin_fftw3=ON -Dfftw3=ON -Dminuit2=ON
+	OR
+	$ cmake ../ -Dgnuinstall=ON -DPYTHON_INCLUDE_DIR=/usr/include/python3.10 -DPYTHON_LIBRARY=/usr/lib/python3.10/config-3.10-x86_64-linux-gnu/libpython3.10.so -Dbuiltin_gsl=ON -Dgdml=ON -Dbuiltin_fftw3=ON -Dfftw3=ON -Dminuit2=ON
+	OR
+	$ cmake ../ -Dgnuinstall=ON -Dbuiltin_gsl=ON -Dgdml=ON -Dbuiltin_fftw3=ON -Dfftw3=ON -Dminuit2=ON
 
-OR libX11-devel
 make sure required componets (and python) are found
 
 	$ cmake --build .

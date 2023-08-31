@@ -1,4 +1,18 @@
 --------- ------------ ------------- -------------- ----------------- -------------- --- ----- window width: -------------|
+
+Compiling (Elmer 9.0 devel on Ubuntu 22.04) 
+
+1) sudo apt-get install mpich libblas-dev liblapack-dev qtscript5-dev libqt5svg5-dev libmumps-dev libparmetis-dev lua5.3 libqwt-qt5-dev 
+
+2) mkdir build && cd build
+
+3) cmake -DWITH_QT5=TRUE -DWITH_ELMERGUI:BOOL=TRUE -DWITH_MPI:BOOL=TRUE -DWITH_Mumps:BOOL=TRUE -DWITH_LUA:BOOL=TRUE -DCMAKE_INSTALL_PREFIX=../install ../
+
+P.S. compiling Elmer v8.4 Ubuntu 22.04 was unsucessful even after few fixes in CMakeLists.txt due to fortran compilation error.
+Elmer 8.4 was ok on Ubuntu 18.04 though.
+Elmer 9.0 release version (neither from github nor from relase announcement) could not compile on Ubuntu 22.04. Most likely due to too new gfortran version. Maybe try with _clean_ insallation of gfortran-10 instead of gfortran-11.
+
+--------- ------------ ------------- -------------- ----------------- -------------- --- ----------------- -------------
 Used verion 8.2 release.
 	0) Elmer libs and bin must be set in LD_LIBRARY_PATH and PATH correspondly (as in official manual)
 	LD_LIBRARY_PATH can't be set in initializing .sh script in /etc/profile.d/my_startup.sh (see Ubuntu.txt)

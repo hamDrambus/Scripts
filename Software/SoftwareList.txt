@@ -22,3 +22,13 @@ Run as SYSTEM user: AdvancedRun from Nirsoft
 Ubuntu:
 
 File manager: Dolphin
+
+apt-get: libssl-dev build-essential gfortran qtcreator qtbase5-dev qt5-qmake mesa-common-dev libglu1-mesa-dev
+
+Work: SpeedCrunch, Anydesk, Gmsh, Elmer, WebPlotDigitizer, Oracle VirtualBox
+
+Programming: git, PyCharm, Cmake, eclipse, Garfield++, c++ boost, CERN root, Geant4, My own projects
+
+HP Printer: sudo apt-get install hplip hplip-gui
+
+Misc: Gimp, Inkscape, FoxitReader

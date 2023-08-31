@@ -1,4 +1,10 @@
 -------- window width ------- ------------- ----------- --------- ---------- ------- --------- --------- window width: ------|
+-1) For BINP local network it is mandatory to disalbe avahi daemon:
+	sudo systemctl disable avahi-daemon
+	sudo systemctl stop avahi-daemon
+    Check with:
+    	service --status-all
+
  0) It's better to use Dolphin File Manager (default in SL7):
 	via Software Center (easier than using bash)
 
@@ -134,10 +140,10 @@ Determine current value: >cat /proc/sys/kernel/perf_event_paranoid
 
 13) Remote disk (at lab)
 	Conntcted via File Manager
-	smb://192.168.162.104 download
+	smb://192.168.162.104/NAS2_Vol1/
 	To operate with it via bash mountpoint is required.
 	To get how File Manager set it: open it -> open in teminal.
-	In my case it's /run/user/1000/gvfs/smb-share:server=192.168.162.104,share=download/
+	In my case it's /run/user/1000/gvfs/smb-share:server=192.168.162.104,share=NAS2_Vol1/
 	Works as usual path.
 
 14) Lost files restoration
