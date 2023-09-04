@@ -4,6 +4,10 @@
 	sudo systemctl stop avahi-daemon
     Check with:
     	service --status-all
+UPD: Firefox seems to restart it constantly anyway. Had to
+	sudo apt-get remove avahi-daemon
+UPD: Or use
+	systemctl mask avahi-daemon.socket
 
  0) It's better to use Dolphin File Manager (default in SL7):
 	via Software Center (easier than using bash)
@@ -245,4 +249,10 @@ Determine current value: >cat /proc/sys/kernel/perf_event_paranoid
 
 18) Finding and replacing every occurrence of oldtext with newtext in every text file under the /some/folder/ directory tree recursively:
 	grep -rl --include=\*.h oldtext . | xargs sed -i 's/oldtext/newtext/g'
+	
+19) Setting up gnome / dock interface:
+
+# Docks (left panels) are separate for each wokspace
+gsettings set org.gnome.shell.extensions.dash-to-dock isolate-workspaces true
+
 

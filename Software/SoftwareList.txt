@@ -26,7 +26,9 @@ Ubuntu:
 
 File manager: Dolphin
 
-apt-get: libssl-dev build-essential gfortran qtcreator qtbase5-dev qt5-qmake mesa-common-dev libglu1-mesa-dev
+apt-get: libssl-dev build-essential gfortran qtcreator qtbase5-dev qt5-qmake mesa-common-dev libglu1-mesa-dev texlive-latex-extra texlive-lang-cyrillic gifsicle
+
+Editors/Viewers: apt gifsicle for gifview
 
 Work: SpeedCrunch, Anydesk, Gmsh, Elmer, WebPlotDigitizer, Oracle VirtualBox
 

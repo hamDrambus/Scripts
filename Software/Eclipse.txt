@@ -11,3 +11,6 @@ YOUR_WORKSPACE_HOME/.metadata/.plugins/org.eclipse.core.resources/.project
 or
 YOUR_WORKSPACE_HOME/.metadata/.plugins/org.eclipse.core.resources/.projects
 restart Eclipse problem should be solved
+
+Customization:
+	1) Plugin on marketplace Darkest Dark Theme DevStyle for Eclipse
