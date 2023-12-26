@@ -26,14 +26,17 @@ Ubuntu:
 
 File manager: Dolphin
 
-apt-get: libssl-dev build-essential gfortran qtcreator qtbase5-dev qt5-qmake mesa-common-dev libglu1-mesa-dev texlive-latex-extra texlive-lang-cyrillic gifsicle
+apt-get: libssl-dev build-essential gfortran qtcreator qtbase5-dev qt5-qmake mesa-common-dev libglu1-mesa-dev texlive-latex-extra texlive-lang-cyrillic texlive-publishers latexmk gifsicle smartmontools
 
-Editors/Viewers: apt gifsicle for gifview
+Editors/Viewers: apt gifsicle for gifview. VScode as a code editor.
 
 Work: SpeedCrunch, Anydesk, Gmsh, Elmer, WebPlotDigitizer, Oracle VirtualBox
 
-Programming: git, PyCharm, Cmake, eclipse, Garfield++, c++ boost, CERN root, Geant4, My own projects
+Programming: git, PyCharm, Cmake, eclipse [Depricated, use VScode], VSCode [+extensions: C/C++ extension pack, CMake Tools] Garfield++, c++ boost, CERN root, Geant4, My own projects
 
 HP Printer: sudo apt-get install hplip hplip-gui
 
-Misc: Gimp, Inkscape, FoxitReader
+Misc: Gimp, FoxitReader
+apt-get inkscape
+
+In VBox: sudo apt-get install virtualbox-guest-utils

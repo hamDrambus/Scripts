@@ -254,5 +254,6 @@ Determine current value: >cat /proc/sys/kernel/perf_event_paranoid
 
 # Docks (left panels) are separate for each wokspace
 gsettings set org.gnome.shell.extensions.dash-to-dock isolate-workspaces true
-
+# Remove trash icon from the Dock
+gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
 
