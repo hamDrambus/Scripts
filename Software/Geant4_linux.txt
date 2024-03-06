@@ -5,3 +5,41 @@ is required on startup:
 "During the installation of your library and executable, the runtime paths to find the library are stripped from the executable. Therefore your library has to reside in the runtime library search path. For example under Linux, try to set LD_LIBRARY_PATH to the directory that contains the installed library when starting your executable."
 
 cmake -DCMAKE_INSTALL_PREFIX=../geant4-v11.0.0-install -DGEANT4_INSTALL_DATA=ON -DGEANT4_USE_SYSTEM_EXPAT=OFF ../geant4-v11.0.0/
+
+================================================================================================================
+# Geant4 for clean WSL ubuntu 22:
+sudo apt update && sudo apt upgrade
+# Some are for geant4, some are generally useful
+sudo apt-get install build-essential xwayland xauth gedit openssl libssl-dev libssl1.0 libgl1-mesa-dev qtbase5-dev qtdeclarative5-dev qt5-qmake libqt5x11extras5 mesa-common-dev libglu1-mesa-dev gifsicle smartmontools gifsicle gnome-terminal git cmake python3-pip freeglut3-dev mesa-utils nautilus gdb -y
+# For gnome terminal set locales and then reboot
+sudo localectl set-locale LANG="en_US.UTF-8"
+# Fixing graphics bugs: https://www.reddit.com/r/bashonubuntuonwindows/comments/18fkhn8/weird_graphical_glitchproblem_in_ubuntu_wslg/
+sudo add-apt-repository ppa:oibaf/graphics-drivers
+sudo apt update && sudo apt upgrade
+# Updating mesa drivers to lastest version:
+sudo add-apt-repository ppa:kisak/kisak-mesa
+sudo apt update && sudo apt upgrade
+# Installing VScode via apt-get is too long a procedure.
+sudo snap install --classic code
+# Geant4 dependencies
+sudo apt-get install libxmu-dev libcurl4-openssl-dev -y
+# Xerces for Geant4 must be built from source, see Geant4 isntallation guide
+# Launching WSL with gnome terminal by default: https://www.reddit.com/r/bashonubuntuonwindows/comments/51f7ni/how_to_run_gnome_terminal_on_wsl/?rdt=65467
+wsl ~ -e sh -c "DISPLAY=:0 gnome-terminal" && exit
+# Default WSL had strange GUI bugs. Also launching gnome-terminal from wsl was inconsistent.
+# GUI bugs were fixed by exucting
+wsl --shutdown
+wsl --update
+wsl --update --pre-release
+# in powershell. It is also possible that updating GPU drivers will be useful.
+# Inconsistency in WSL was because ubuntu session is not persistent and is closed (at arbitrary times)
+# after wsl command is executed. To fix it, handing WSL command is executed by calling bash command that waits for
+# user input indifinately. To help with WSL, I created several helper .bat scripts that are to be pinned to taskbar,
+# see Scripts/WSL/
+
+# /etc/profile.d/ additional scripts:
+source /home/user/Software/geant4-v11.2.0-install/bin/geant4.sh
+source /home/user/Software/geant4-v11.2.0-install/share/Geant4/geant4make/geant4make.sh
+
+export DONT_PROMPT_WSL_INSTALL=True
+export PATH=$PATH:/snap/bin:/home/frolov/.local/bin 

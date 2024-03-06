@@ -257,3 +257,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock isolate-workspaces true
 # Remove trash icon from the Dock
 gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
 
+20) Making global aliases: add
+    alias python='python3'
+to /etc/bash.bashrc script (profile.d may be ignored)
+

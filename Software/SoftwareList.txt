@@ -28,6 +28,10 @@ File manager: Dolphin
 
 apt-get: libssl-dev build-essential gfortran qtcreator qtbase5-dev qt5-qmake mesa-common-dev libglu1-mesa-dev texlive-latex-extra texlive-lang-cyrillic texlive-publishers latexmk gifsicle smartmontools
 
+For python3:
+python -m pip install -U pip
+python -m pip install -U matplotlib numpy scipy
+
 Editors/Viewers: apt gifsicle for gifview. VScode as a code editor.
 
 Work: SpeedCrunch, Anydesk, Gmsh, Elmer, WebPlotDigitizer, Oracle VirtualBox
