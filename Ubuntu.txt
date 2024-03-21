@@ -257,7 +257,10 @@ gsettings set org.gnome.shell.extensions.dash-to-dock isolate-workspaces true
 # Remove trash icon from the Dock
 gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
 
-20) Saving and loading terminal settings:
-	dconf dump /org/gnome/terminal/ > gnome_terminal_settings.txt
-	dconf load /org/gnome/terminal/ < gnome_terminal_settings.txt 
+20) Making global aliases: add
+    alias python='python3'
+to /etc/bash.bashrc script (profile.d may be ignored)
 
+21) Saving and loading terminal settings:
+	dconf dump /org/gnome/terminal/ > gnome_terminal_settings.txt
+	dconf load /org/gnome/terminal/ < gnome_terminal_settings.txt
