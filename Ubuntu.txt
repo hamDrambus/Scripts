@@ -264,3 +264,8 @@ to /etc/bash.bashrc script (profile.d may be ignored)
 21) Saving and loading terminal settings:
 	dconf dump /org/gnome/terminal/ > gnome_terminal_settings.txt
 	dconf load /org/gnome/terminal/ < gnome_terminal_settings.txt
+	
+22) Extend virtual drive from guest ubuntu
+    https://unix.stackexchange.com/questions/196512/how-to-extend-filesystem-partition-on-ubuntu-vm :
+    sudo growpart /dev/sda 1
+    sudo resize2fs /dev/sda1 
