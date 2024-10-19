@@ -256,6 +256,8 @@ Determine current value: >cat /proc/sys/kernel/perf_event_paranoid
 gsettings set org.gnome.shell.extensions.dash-to-dock isolate-workspaces true
 # Remove trash icon from the Dock
 gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
+# Remove mounted discs from the Dock
+gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts false
 
 20) Making global aliases: add
     alias python='python3'
@@ -268,4 +270,12 @@ to /etc/bash.bashrc script (profile.d may be ignored)
 22) Extend virtual drive from guest ubuntu
     https://unix.stackexchange.com/questions/196512/how-to-extend-filesystem-partition-on-ubuntu-vm :
     sudo growpart /dev/sda 1
-    sudo resize2fs /dev/sda1 
+    sudo resize2fs /dev/sda1
+    
+23) Fix _apt missing write permissions (Download is performed unsandboxed as root as file '...' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied):
+	https://askubuntu.com/questions/908800/what-does-this-apt-error-message-download-is-performed-unsandboxed-as-root :
+	sudo chown -Rv _apt:root /var/cache/apt/archives/partial/
+	sudo chmod -Rv 700 /var/cache/apt/archives/partial/
+	
+24) Alt+Shift language changing:
+	gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt>Shift_L']"
