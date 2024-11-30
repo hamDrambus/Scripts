@@ -30,11 +30,7 @@ change of owner (does not seem to work):
 	>chown $USER -R $path_to_folder //$USER is a real env. var.
 	>exit //from root
 
- 5) paths:
-starting with / - absolute paths
-/home/perser/Documets - standart Documents folder for user named perser
-not starting with / - relative paths
-../  - parent dir
+ 5)
 
  6)Commands
 echo - display:
@@ -278,4 +274,10 @@ to /etc/bash.bashrc script (profile.d may be ignored)
 	sudo chmod -Rv 700 /var/cache/apt/archives/partial/
 	
 24) Alt+Shift language changing:
-	gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt>Shift_L']"
+	# gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt>Shift_L']"
+	# gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Alt>Shift_L', '<Shift>XF86Keyboard']"
+	# gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt>Shift_L', 'XF86Keyboard']"
+	UPD: Do not use above, it has language popup that forcefully exits fullscreen. Instead use:
+	1. Disable default combintation for layout switching in Settings => Keyboard Shortcuts => Typing
+	2. Install gnome-tweaks and turn on your new key layouts: gnome-tweaks => Additional Layout Options => Switching to another layout
+
