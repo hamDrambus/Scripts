@@ -64,12 +64,95 @@ curl -O -L https://gitlab.cern.ch/geant4/geant4/-/archive/v11.2.1/geant4-v11.2.1
 tar -xf geant4-v11.2.1.tar.gz
 mkdir -p geant4-v11.2.1-build && cd geant4-v11.2.1-build
 cmake -DCMAKE_INSTALL_PREFIX=../geant4-v11.2.1-install -DGEANT4_INSTALL_DATA=ON -DGEANT4_INSTALL_DATA_TIMEOUT=6000 -DGEANT4_USE_GDML=ON -DGEANT4_USE_QT=ON -DGEANT4_USE_SYSTEM_EXPAT=OFF ../geant4-v11.2.1/
-make install -j6
+make install -j8
+# The last command can often fail because of issues with loading geant4 datasets.
+# In that case, move to more reliable network or increase GEANT4_INSTALL_DATA_TIMEOUT.
+# If it does not help, then datasets can be loaded manually, e.g.:
+# mkdir -p ~/Software/Geant4/datasets/ && cd "$_"
+# curl -S -L https://cern.ch/geant4-data/datasets/G4NDL.4.7.tar.gz | tar -xz
+# curl -S -L https://cern.ch/geant4-data/datasets/G4EMLOW.8.5.tar.gz | tar -xz
+# curl -S -L https://cern.ch/geant4-data/datasets/G4PhotonEvaporation.5.7.tar.gz | tar -xz
+# curl -S -L https://cern.ch/geant4-data/datasets/G4RadioactiveDecay.5.6.tar.gz | tar -xz
+# curl -S -L https://cern.ch/geant4-data/datasets/G4PARTICLEXS.4.0.tar.gz | tar -xz
+# curl -S -L https://cern.ch/geant4-data/datasets/G4PII.1.3.tar.gz | tar -xz
+# curl -S -L https://cern.ch/geant4-data/datasets/G4RealSurface.2.2.tar.gz | tar -xz
+# curl -S -L https://cern.ch/geant4-data/datasets/G4SAIDDATA.2.0.tar.gz | tar -xz
+# curl -S -L https://cern.ch/geant4-data/datasets/G4ABLA.3.3.tar.gz | tar -xz
+# curl -S -L https://cern.ch/geant4-data/datasets/G4INCL.1.2.tar.gz | tar -xz
+# curl -S -L https://cern.ch/geant4-data/datasets/G4ENSDFSTATE.2.3.tar.gz | tar -xz
+# curl -S -L https://cern.ch/geant4-data/datasets/G4TENDL.1.4.tar.gz | tar -xz
+# Up-to-date links can be found at https://geant4.web.cern.ch/download 
+# In this case Geant4 must be configured with
+# cmake -DCMAKE_INSTALL_PREFIX=../geant4-v11.2.1-install -DGEANT4_INSTALL_DATA=OFF -DGEANT4_INSTALL_DATADIR=${HOME}/Software/Geant4/datasets -DGEANT4_USE_GDML=ON -DGEANT4_USE_QT=ON -DGEANT4_USE_SYSTEM_EXPAT=OFF ../geant4-v11.2.1/
+# make install -j8
+# Also, Geant4 looks for datasets in GEANT4_DATA_DIR environment variable which can be used instead.
+# export GEANT4_DATA_DIR=${HOME}/Software/Geant4/datasets
+# This is the case when geant4 executable is run at cluster.
 
 ================================================================================================================
-For cluster computations use
+For using Geant4 on cluster
 ================================================================================================================
+
+# Install C++ development tools and some useful packages:
+sudo apt-get update
+sudo apt-get install build-essential gfortran openssl libssl1.0 qtbase5-dev qtdeclarative5-dev qt5-qmake libqt5x11extras5 mesa-common-dev libglu1-mesa-dev mesa-utils openssh-client libgl1-mesa-dev freeglut3-dev libxmu-dev libcurl4-openssl-dev curl git cmake python3-pip smartmontools -y
+sudo snap install --classic code
+
+# Install static version of libraries required for xerces
+sudo apt-get install openssl libssl-dev libcrypt-dev libcurl4-openssl-dev -y
+
+# Instructions on how to build curl from sources can be found at
+# https://github.com/moparisthebest/static-curl?tab=readme-ov-file
+# It will require
+sudo apt-get install -y libssl-dev libnghttp2-dev libssh2-1-dev zlib1g-dev -y
+
 mkdir -p geant4-v11.2.0-build-cluster && cd geant4-v11.2.0-build-cluster
 cmake -DCMAKE_INSTALL_PREFIX=../geant4-v11.2.0-install-cluster -DGEANT4_INSTALL_DATA=OFF -DGEANT4_INSTALL_DATADIR=${HOME}/Software/Geant4/geant4-v11.2.0-install/share/Geant4/data -DGEANT4_USE_GDML=ON -DGEANT4_USE_QT=OFF -DGEANT4_USE_SYSTEM_EXPAT=OFF -DBUILD_STATIC_LIBS=ON -DGEANT4_BUILD_STORE_TRAJECTORY=OFF ../geant4-v11.2.0/
 make install -j6
 
+# Build curl from sources 
+mkdir -p ~/Software/curl/ && cd "$_"
+# If latest versions do not work, old one can be found at https://curl.se/download/archeology/curl-${CURL_VERSION}.tar.gz
+CURL_VERSION='8.7.1'
+rm -rf "curl-${CURL_VERSION}/"
+curl -S -L https://curl.se/download/curl-${CURL_VERSION}.tar.gz | tar -xz
+cd curl-${CURL_VERSION}/
+
+LDFLAGS="-static" PKG_CONFIG="pkg-config --static" ./configure --disable-shared --enable-static --disable-ldap --enable-ipv6 --enable-unix-sockets --with-nghttp2 --includedir=/usr/include/ --without-brotli --libdir=/usr/lib/x86_64-linux-gnu/ --with-openssl --without-libssh2 --without-zlib
+
+make -j4 V=1 LDFLAGS="-static -all-static -static-libgcc"
+sudo make install
+# curl libraries should have been installed in /usr/local/lib and
+ldd $(which curl) # must report no dynamic dependencies
+curl-config --libs
+# Will show -lcurl -lnghttp2 -lssl -lcrypto -ldl -pthread
+# All libraries shown here must be linked against when building final C++ executable.
+# This means that CMakeLists.txt must find all curl dependencies (.a libraries).
+# If some dependency is not found, then final build step will fail with unresolved symbols.
+# Current CMakeLists.txt does work but it may have to be modified in the future.
+
+# Install xerces-c for geant4:
+cd ~/Software
+curl -S -L https://dlcdn.apache.org//xerces/c/3/sources/xerces-c-3.2.5.tar.gz | tar -xz
+cd xerces-c-3.2.5
+rm -rf build
+mkdir -p build && cd "$_"
+cmake -Dnetwork-accessor=curl -BUILD_SHARED_LIBS=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON ../
+sudo make install -j6
+# Xerces-c does not have a cmake flag to build both shared and static libs at the same time,
+# so we need to repeat the build:
+cd ../ && rm -rf build-cluster
+mkdir -p build-cluster && cd "$_"
+cmake -Dnetwork-accessor=curl -BUILD_SHARED_LIBS=OFF -DCMAKE_POSITION_INDEPENDENT_CODE=ON ../
+sudo make install -j6
+# To uninstall use
+# sudo xargs rm < install_manifest.txt
+# from the xerces-c-3.2.5/build or xerces-c-3.2.5/build-cluster folder.
+
+# Compile geant4 for cluster use
+export CXXFLAGS="-ffunction-sections -Wl,--gc-sections"
+cd ~/Software/Geant4
+rm -rf geant4-v11.2.1-build-cluster
+mkdir geant4-v11.2.1-build-cluster && cd "$_"
+cmake -DCMAKE_INSTALL_PREFIX=../geant4-v11.2.1-install-cluster -DGEANT4_INSTALL_DATA=OFF -DGEANT4_INSTALL_DATADIR=${HOME}/Software/Geant4/geant4-v11.2.1-install/share/Geant4/data/ -DGEANT4_USE_GDML=OFF -DGEANT4_USE_QT=OFF -DGEANT4_USE_SYSTEM_EXPAT=OFF -DBUILD_SHARED_LIBS=OFF -DBUILD_STATIC_LIBS=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DGEANT4_INSTALL_EXAMPLES=OFF -DGEANT4_BUILD_STORE_TRAJECTORY=ON ../geant4-v11.2.1/
+make install -j12

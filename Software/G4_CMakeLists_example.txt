@@ -1,0 +1,204 @@
+# For finding Boost specify only root directory-DBOOST_ROOT=...Software/boost_1_67_0/
+# For finding Geant4 and its libraries executing 'source .../geant4.11.0.0-install/bin/geant4.sh'
+# is required either at the start of each bash session or at system startup
+
+#----------------------------------------------------------------------------
+# Setup the project
+cmake_minimum_required(VERSION 3.16)
+project(geant4-app)
+
+#----------------------------------------------------------------------------
+# Check that IPO/LTO optimization is supported
+include(CheckIPOSupported)
+check_ipo_supported(RESULT lto_supported OUTPUT error)
+
+#----------------------------------------------------------------------------
+# Find Geant4 package, activating all available UI and Vis drivers by default
+# You can set WITH_GEANT4_UIVIS to OFF via the command line or ccmake/cmake-gui
+# to build a batch mode only executable
+# The defaults are chosen so that CMake can be run from VScode without issues.
+option(WITH_GEANT4_UIVIS "Build example with Geant4 UI and Vis drivers" ON)
+option(WITH_GEANT4_STATICLIBS "Build with static libraries" OFF)
+option(WITH_TRAJECTORIES_DISABLED "Disable storing and recording trajectores" OFF)
+set(INSTALL_NAME_SUFFIX "" CACHE STRING "Suffix appended to install directory to separate cluster and local builds")
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+  SET(CMAKE_INSTALL_PREFIX ${PROJECT_BINARY_DIR}/../ CACHE PATH "In-source install" FORCE)
+endif()
+if(CMAKE_BUILD_TYPE_INITIALIZED_TO_DEFAULT)
+  SET(CMAKE_BUILD_TYPE Release CACHE PATH "Default build type is release" FORCE)
+endif()
+
+if(WITH_GEANT4_STATICLIBS)
+  list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
+  set(BUILD_SHARED_LIBS OFF)
+  set(CMAKE_FIND_LIBRARY_SUFFIXES ".a" ".so")
+  find_package(Geant4 REQUIRED static)
+  find_package(XercesC REQUIRED)
+  set(CURL_STATICLIB TRUE)
+  find_package(CURL REQUIRED)
+  set(OPENSSL_USE_STATIC_LIBS ON)
+  find_package(OpenSSL REQUIRED)
+  set(ZLIB_USE_STATIC_LIBS ON)
+  find_package(ZLIB)
+  find_package(ICU REQUIRED COMPONENTS uc i18n data)
+  find_package(NGHTTP2 REQUIRED)
+  set(LIBRARY_FLAG ${CURL_LIBRARIES} ${OPENSSL_LIBRARIES} ${ZLIB_LIBRARIES} ${ICU_LIBRARIES} ${CMAKE_DL_LIBS} ${NGHTTP2_LIBRARIES} -static)
+  
+else()
+  find_package(XercesC REQUIRED)
+  #----------------------------------------------------------------------------
+  # Set -rpath for binary. Allows it to find libraries in non-stardard locations
+  # (e.g. not in /usr/) without using LD_LIBRARY_PATH
+  #
+  # set(CMAKE_SKIP_BUILD_RPATH False)
+  # set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+  # set(CMAKE_INSTALL_RPATH "lib/${CMAKE_BUILD_TYPE}${INSTALL_NAME_SUFFIX}")
+  # add the automatically determined parts of the RPATH
+  # which point to directories outside the build tree to the install RPATH
+  # set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+  # the RPATH to be used when installing, but only if it's not a system directory
+  # list(FIND CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES "${CMAKE_INSTALL_PREFIX}/lib" isSystemDir)
+  # if("${isSystemDir}" STREQUAL "-1")
+      # set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+  # endif("${isSystemDir}" STREQUAL "-1")
+
+  set(LIBRARY_FLAG "")
+  if(WITH_GEANT4_UIVIS)
+    find_package(Geant4 REQUIRED ui_all vis_all)
+  else()
+    find_package(Geant4 REQUIRED) # 10.7.4 EXACT
+  endif()
+endif()
+find_package(Boost 1.33 REQUIRED)
+
+#----------------------------------------------------------------------------
+# Setup Geant4 include directories and compile definitions
+#----------------------------------------------------------------------------
+# Setup include directory for this project
+include_directories(${Boost_INCLUDE_DIR} ${PROJECT_SOURCE_DIR}/include ${Geant4_INCLUDE_DIRS}
+                    ${XERCESC_INCLUDE_DIR})
+
+# Add external dependencies
+if (NOT TARGET yaml-cpp)
+  add_subdirectory(externals/yaml-cpp)
+endif()
+if (NOT TARGET fmt-header-only)
+  add_subdirectory(externals/fmt EXCLUDE_FROM_ALL)
+endif()
+
+# Locate sources and headers for this project
+file(GLOB_RECURSE sources ${PROJECT_SOURCE_DIR}/source/*.cc
+                          ${PROJECT_SOURCE_DIR}/source/*.cpp)
+file(GLOB_RECURSE headers ${PROJECT_SOURCE_DIR}/include/*.hh
+                          ${PROJECT_SOURCE_DIR}/include/*.h
+                          ${PROJECT_SOURCE_DIR}/include/*.hpp)
+
+# Remove some of the warnings for gcc as
+# boost has quite a lot of these particular ones
+if (MSVC)
+    # warning level 4
+    add_compile_options(/W4)
+else()
+    # additional warnings 
+    add_compile_options(-Wno-pedantic -Wno-shadow -Wno-reorder -Wno-unused-parameter -Wno-deprecated-copy)
+    if(WITH_GEANT4_STATICLIBS)
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -flto -fuse-linker-plugin -ffat-lto-objects -fwhole-program")
+    endif()
+endif()
+
+# Add the executables, and link it to the Geant4 libraries
+add_executable(${PROJECT_NAME} ${PROJECT_SOURCE_DIR}/source/main.cxx ${sources} ${headers})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${Geant4_LIBRARIES} ${Boost_LIBRARIES} yaml-cpp fmt-header-only
+                      ${XercesC_LIBRARIES} ${CURL_LIBRARIES} ${LIBRARY_FLAG})
+message(STATUS "Geant4 version: ${Geant4_VERSION}")
+message(STATUS "Geant4 libraries: ${Geant4_LIBRARIES}")
+message(STATUS "Xerces-c libraries: ${XercesC_LIBRARIES}")
+message(STATUS "Curl libraries: ${CURL_LIBRARIES}")
+message(STATUS "Additional libraries: ${LIBRARY_FLAG}")
+
+# Add compilation of encoding and decoding utilities.
+add_executable(util-encode ${PROJECT_SOURCE_DIR}/source/encode.cxx 
+              ${PROJECT_SOURCE_DIR}/source/utilities/GlobalUtilities.cc 
+              ${headers})
+add_executable(util-decode ${PROJECT_SOURCE_DIR}/source/decode.cxx 
+              ${PROJECT_SOURCE_DIR}/source/utilities/GlobalUtilities.cc 
+              ${headers})
+add_executable(util-merge-spectra ${PROJECT_SOURCE_DIR}/source/merge_spectra.cxx 
+              ${PROJECT_SOURCE_DIR}/source/utilities/GlobalUtilities.cc 
+              ${headers})
+add_executable(util-merge-tracks ${PROJECT_SOURCE_DIR}/source/merge_tracks.cxx 
+              ${sources}
+              ${headers})
+target_link_libraries(util-merge-tracks PRIVATE ${Geant4_LIBRARIES} ${Boost_LIBRARIES} yaml-cpp fmt-header-only
+              ${XercesC_LIBRARIES} ${CURL_LIBRARIES} ${LIBRARY_FLAG})
+
+if(WITH_GEANT4_STATICLIBS)
+  # Reduce (strip) binary size
+  add_custom_command(
+      TARGET "${PROJECT_NAME}" POST_BUILD
+      DEPENDS "${PROJECT_NAME}"
+      COMMAND $<$<CONFIG:release>:${CMAKE_STRIP}>
+      ARGS --strip-all $<TARGET_FILE:${PROJECT_NAME}>
+  )
+  add_custom_command(
+      TARGET util-merge-tracks POST_BUILD
+      DEPENDS util-merge-tracks
+      COMMAND $<$<CONFIG:release>:${CMAKE_STRIP}>
+      ARGS --strip-all $<TARGET_FILE:util-merge-tracks>
+  )
+endif()
+
+add_definitions(${Geant4_DEFINITIONS})
+if(WITH_GEANT4_UIVIS)
+  add_definitions(-DWITH_GEANT4_UIVIS)
+endif()
+if(WITH_TRAJECTORIES_DISABLED)
+  add_definitions(-DWITH_TRAJECTORIES_DISABLED)
+endif()
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Geant4_CXX_FLAGS} -std=c++17")
+message(STATUS "c++ flags: ${CMAKE_CXX_FLAGS}")
+
+# Copy scripts, inputs and binaries to the isntall
+# This is so that we can run the executable directly from it because it
+# relies on these files being in the current working directory.
+set(FINAL_INSTALL_DIR bin/${CMAKE_BUILD_TYPE}${INSTALL_NAME_SUFFIX})
+set(PROJECT_SCRIPTS
+  inputs/vis.mac
+  inputs/settings.yml
+  .gdbinit
+  )
+list(TRANSFORM PROJECT_SCRIPTS PREPEND ${PROJECT_SOURCE_DIR}/)
+install(FILES ${PROJECT_SCRIPTS} DESTINATION ${FINAL_INSTALL_DIR})
+
+# Dead code removal
+if(lto_supported)
+  set_property(TARGET util-encode util-decode util-merge-spectra util-merge-tracks ${PROJECT_NAME} PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
+endif()
+
+# Install the executables
+install(TARGETS util-encode util-decode util-merge-spectra util-merge-tracks ${PROJECT_NAME} DESTINATION ${FINAL_INSTALL_DIR})
+
+# TODO: It would be better to make installation of encrypted files
+# via add_custom_command and target dependency on generated files.
+file(GLOB ENCRYPED_FILES ${PROJECT_SOURCE_DIR}/inputs/*.gdml LIST_DIRECTORIES FALSE)
+message(STATUS "ENCRYPED_FILES ${ENCRYPED_FILES}")
+foreach(FILE ${ENCRYPED_FILES})
+  cmake_path(GET FILE FILENAME FNAME)
+  install(CODE "
+    set (cmd ./util-encode)
+    set (args ${FILE} ${FNAME})
+    execute_process(
+      COMMAND \${cmd} \${args}
+      WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}/${FINAL_INSTALL_DIR}
+      ERROR_VARIABLE res_error
+      OUTPUT_VARIABLE res_output
+      RESULT_VARIABLE result
+    )
+    if (result)
+      message(STATUS \"Error while installing ${CMAKE_INSTALL_PREFIX}/${FINAL_INSTALL_DIR}/${FNAME}: \${result}\")
+      message(STATUS \"\${res_error}\")
+    else()
+      message(STATUS \"Installing: ${CMAKE_INSTALL_PREFIX}/${FINAL_INSTALL_DIR}/${FNAME}\")
+    endif()"
+  )
+endforeach()
