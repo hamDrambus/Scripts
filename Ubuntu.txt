@@ -261,3 +261,8 @@ gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
     alias python='python3'
 to /etc/bash.bashrc script (profile.d may be ignored)
 
+21) For Hyper-V guest, to make ubuntu see virtual disk at its maximum capacity
+    sudo apt-get install cloud-guest-utils -y
+    sudo growpart /dev/sda 1
+    sudo resize2fs /dev/sda1
+
