@@ -18,5 +18,6 @@ export PATH=$PATH:$ELMER_HOME/bin:/home/frolov/.local/bin
 touch /home/frolov/Documents/profile.d.test
 echo "PATH=$PATH" > /home/frolov/Documents/profile.d.test
 
-# This command is ignored here. Add it to /etc/bash.bashrc instead
-# alias python='python3'
+This one does not work in profile.d
+add it to /etc/bash.bashrc instead
+alias python=python3

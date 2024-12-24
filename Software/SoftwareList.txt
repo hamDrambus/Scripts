@@ -25,8 +25,11 @@ Run as SYSTEM user: AdvancedRun from Nirsoft
 Ubuntu:
 
 File manager: Dolphin
+Install via apt-get:
+	sudo apt-get install dolphin
+, not via snap store (buggy version).
 
-apt-get: libssl-dev build-essential gfortran qtcreator qtbase5-dev qt5-qmake mesa-common-dev libglu1-mesa-dev texlive-latex-extra texlive-lang-cyrillic texlive-publishers latexmk gifsicle smartmontools mesa-utils cifs-utils
+apt-get: libssl-dev build-essential gfortran qtcreator qtbase5-dev qt5-qmake mesa-common-dev libglu1-mesa-dev texlive-latex-extra texlive-lang-cyrillic texlive-publishers latexmk gifsicle smartmontools mesa-utils cifs-utils pdftk gnome-tweaks
 
 For python3:
 python -m pip install -U pip
@@ -36,11 +39,13 @@ Editors/Viewers: apt gifsicle for gifview. VScode as a code editor.
 
 Work: SpeedCrunch, Anydesk, Gmsh, Elmer, WebPlotDigitizer, Oracle VirtualBox
 
-Programming: git, PyCharm, Cmake, eclipse [Depricated, use VScode], VSCode [+extensions: C/C++ extension pack, CMake Tools] Garfield++, c++ boost, CERN root, Geant4, My own projects
+Programming: git, PyCharm, Cmake, eclipse [Depricated, use VScode], VSCode [+extensions: C/C++ extension pack, CMake Tools] Garfield++, c++ boost, CERN root, Geant4, Docker, My own projects
+
+Docker https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
 
 HP Printer: sudo apt-get install hplip hplip-gui
 
 Misc: Gimp, FoxitReader
-apt-get inkscape
+sudo apt-get install inkscape autokey-gtk -y
 
 In VBox: sudo apt-get install virtualbox-guest-utils

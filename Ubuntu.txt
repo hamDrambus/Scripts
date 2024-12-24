@@ -30,11 +30,7 @@ change of owner (does not seem to work):
 	>chown $USER -R $path_to_folder //$USER is a real env. var.
 	>exit //from root
 
- 5) paths:
-starting with / - absolute paths
-/home/perser/Documets - standart Documents folder for user named perser
-not starting with / - relative paths
-../  - parent dir
+ 5)
 
  6)Commands
 echo - display:
@@ -256,12 +252,36 @@ Determine current value: >cat /proc/sys/kernel/perf_event_paranoid
 gsettings set org.gnome.shell.extensions.dash-to-dock isolate-workspaces true
 # Remove trash icon from the Dock
 gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
+# Remove mounted discs from the Dock
+gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts false
 
 20) Making global aliases: add
     alias python='python3'
 to /etc/bash.bashrc script (profile.d may be ignored)
 
-21) For Hyper-V guest, to make ubuntu see virtual disk at its maximum capacity
+21) Saving and loading terminal settings:
+	dconf dump /org/gnome/terminal/ > gnome_terminal_settings.txt
+	dconf load /org/gnome/terminal/ < gnome_terminal_settings.txt
+	
+22) Extend virtual drive from guest ubuntu
+    https://unix.stackexchange.com/questions/196512/how-to-extend-filesystem-partition-on-ubuntu-vm :
+    sudo growpart /dev/sda 1
+    sudo resize2fs /dev/sda1
+    
+23) Fix _apt missing write permissions (Download is performed unsandboxed as root as file '...' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied):
+	https://askubuntu.com/questions/908800/what-does-this-apt-error-message-download-is-performed-unsandboxed-as-root :
+	sudo chown -Rv _apt:root /var/cache/apt/archives/partial/
+	sudo chmod -Rv 700 /var/cache/apt/archives/partial/
+	
+24) Alt+Shift language changing:
+	# gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt>Shift_L']"
+	# gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Alt>Shift_L', '<Shift>XF86Keyboard']"
+	# gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt>Shift_L', 'XF86Keyboard']"
+	UPD: Do not use above, it has language popup that forcefully exits fullscreen. Instead use:
+	1. Disable default combintation for layout switching in Settings => Keyboard Shortcuts => Typing
+	2. Install gnome-tweaks and turn on your new key layouts: gnome-tweaks => Additional Layout Options => Switching to another layout
+
+25) For Hyper-V guest, to make ubuntu see virtual disk at its maximum capacity
     sudo apt-get install cloud-guest-utils -y
     sudo growpart /dev/sda 1
     sudo resize2fs /dev/sda1

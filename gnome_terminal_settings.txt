@@ -1,0 +1,13 @@
+[legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+audible-bell=false
+background-color='rgb(77,10,67)'
+bold-color='rgb(83,173,0)'
+bold-color-same-as-fg=true
+cursor-shape='block'
+default-size-columns=150
+default-size-rows=32
+foreground-color='rgb(97,255,0)'
+palette=['rgb(23,20,33)', 'rgb(192,28,40)', 'rgb(100,179,143)', 'rgb(162,115,76)', 'rgb(97,255,0)', 'rgb(163,71,186)', 'rgb(42,161,179)', 'rgb(208,207,204)', 'rgb(94,92,100)', 'rgb(246,97,81)', 'rgb(51,218,122)', 'rgb(233,173,12)', 'rgb(42,123,222)', 'rgb(192,97,203)', 'rgb(51,199,222)', 'rgb(255,255,255)']
+scroll-on-output=false
+scrollback-lines=90000
+use-theme-colors=false
