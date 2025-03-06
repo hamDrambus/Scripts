@@ -1,0 +1,25 @@
+1. Disable keyrign logon prompt:
+https://stackoverflow.com/questions/63107939/visual-studio-code-asking-to-authenticate-default-keyring-everytime-i-start
+    Start VScode
+    Hit Ctrl+Shift+P and run Preferences: Configure Runtime Arguments command. This will open argv.json.
+    Add "password-store": "basic" option
+    Restart VSCode
+    
+2. Extensions:
+code --list-extensions
+code --install-extension ms-python.debugpy
+code --install-extension ms-python.mypy-type-checker
+code --install-extension ms-python.python
+code --install-extension ms-python.vscode-pylance
+code --install-extension ms-vscode.cmake-tools
+code --install-extension ms-vscode.cpptools
+code --install-extension streetsidesoftware.code-spell-checker
+code --install-extension twxs.cmake
+code --install-extension uctakeoff.vscode-counter
+
+3. Disable copilot
+Settings -> C_Cpp: Copilot Hover -> disable
+
+4. Minimize telemetry:
+Settings -> Telemetry: Telemetry Level -> crash
+Settings -> Editor -> Experimental: Tree Sitter Telemetry -> off
